@@ -62,41 +62,47 @@
         </a>
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
-            <a href="home2.html" class="nav-link">Premium</a>
+            <a href="home2.html" class="nav-link">Home 2</a>
             <a href="about.html" class="nav-link">About</a>
             <a href="services.html" class="nav-link">Services</a>
             <a href="fleet.html" class="nav-link active">Fleet</a>
             <a href="pricing.html" class="nav-link">Pricing</a>
             <a href="contact.html" class="nav-link">Contact</a>
-            <a href="dashboard.html" class="nav-link">Dashboard</a>
         </div>
         <div class="nav-actions">
             <button class="icon-btn dark-toggle" title="Toggle Dark Mode" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
             <button class="icon-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
             <a href="login.html" class="btn btn-secondary btn-sm">Sign In</a>
-            <a href="fleet.html" class="btn btn-primary btn-sm">Book Now</a>
+            <a href="dashboard.html" class="btn btn-primary btn-sm">Dashboard</a>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
     <div class="mobile-nav" id="mobile-nav">
         <a href="index.html" class="mobile-nav-link">Home</a>
-        <a href="home2.html" class="mobile-nav-link">Premium</a>
+        <a href="home2.html" class="mobile-nav-link">Home 2</a>
         <a href="about.html" class="mobile-nav-link">About</a>
         <a href="services.html" class="mobile-nav-link">Services</a>
         <a href="fleet.html" class="mobile-nav-link active">Fleet</a>
         <a href="pricing.html" class="mobile-nav-link">Pricing</a>
         <a href="contact.html" class="mobile-nav-link">Contact</a>
-        <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+        <div class="mobile-nav-toggles" style="display:flex; gap:10px; padding:10px 0 4px; border-top:1px solid var(--border-light); margin-top:6px;">
+            <button class="icon-btn dark-toggle" style="flex:1; justify-content:center; gap:8px; width:auto; height:40px; border-radius:var(--radius-md);" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i> <span style="font-size:0.85rem; font-weight:600;">Dark Mode</span>
+            </button>
+            <button class="icon-btn rtl-toggle" style="flex:1; justify-content:center; gap:8px; width:auto; height:40px; border-radius:var(--radius-md);" title="Toggle RTL" aria-label="Toggle RTL">
+                <i class="fas fa-exchange-alt"></i> <span style="font-size:0.85rem; font-weight:600;">RTL / LTR</span>
+            </button>
+        </div>
         <div class="mobile-nav-actions">
             <a href="login.html" class="btn btn-secondary">Sign In</a>
-            <a href="fleet.html" class="btn btn-primary">Book Now</a>
+            <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
         </div>
     </div>
 </nav>
 
 <!-- BANNER -->
 <section class="page-banner">
-    <div class="page-banner-bg" style="background-image:url('assets/banner_services.png');"></div>
+    <div class="page-banner-bg" style="background-image:url('assets/banner_fleet_unique.jpg');"></div>
     <div class="page-banner-overlay"></div>
     <div class="page-banner-content">
         <div class="container">
@@ -172,7 +178,7 @@
         <div class="fleet-grid" id="fleet-grid">
             <!-- Hatchback 1 -->
             <div class="fleet-card animate-on-scroll slide-up" data-category="hatchback">
-                <div class="fleet-card-img"><img src="assets/fleet_hatchback.png" alt="Maruti Swift hatchback rental"></div>
+                <div class="fleet-card-img"><img src="assets/fleet_swift.jpg" alt="Maruti Swift hatchback rental"></div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
                         <div><h3 style="font-size:1rem; margin-bottom:2px;">Maruti Swift</h3><p style="font-size:0.78rem; color:var(--text-muted);">Hatchback · Petrol</p></div>
@@ -191,7 +197,7 @@
 
             <!-- Hatchback 2 -->
             <div class="fleet-card animate-on-scroll slide-up" data-category="hatchback">
-                <div class="fleet-card-img"><img src="assets/fleet_hatchback.png" alt="Hyundai i20 rental"></div>
+                <div class="fleet-card-img"><img src="assets/fleet_i20.jpg" alt="Hyundai i20 rental" style="object-position: center 85%;"></div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
                         <div><h3 style="font-size:1rem; margin-bottom:2px;">Hyundai i20</h3><p style="font-size:0.78rem; color:var(--text-muted);">Hatchback · Petrol</p></div>
@@ -210,7 +216,7 @@
 
             <!-- Sedan 1 -->
             <div class="fleet-card animate-on-scroll slide-up" data-category="sedan">
-                <div class="fleet-card-img"><img src="assets/fleet_sedan.png" alt="Honda City sedan rental"></div>
+                <div class="fleet-card-img"><img src="assets/fleet_city.jpg" alt="Honda City sedan rental" style="object-position: center 70%;"></div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
                         <div><h3 style="font-size:1rem; margin-bottom:2px;">Honda City</h3><p style="font-size:0.78rem; color:var(--text-muted);">Sedan · Petrol</p></div>
@@ -229,10 +235,10 @@
 
             <!-- Sedan 2 -->
             <div class="fleet-card animate-on-scroll slide-up" data-category="sedan">
-                <div class="fleet-card-img"><img src="assets/fleet_sedan.png" alt="Toyota Yaris rental"></div>
+                <div class="fleet-card-img"><img src="assets/fleet_verna_real.jpg" alt="Hyundai Verna rental" style="object-position: center center;"></div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Toyota Yaris</h3><p style="font-size:0.78rem; color:var(--text-muted);">Sedan · Petrol</p></div>
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Hyundai Verna</h3><p style="font-size:0.78rem; color:var(--text-muted);">Sedan · Petrol</p></div>
                         <span class="badge badge-pending">Limited</span>
                     </div>
                     <div class="fleet-card-price">₹1,299 <span>/ day</span></div>
@@ -248,16 +254,16 @@
 
             <!-- SUV 1 -->
             <div class="fleet-card animate-on-scroll slide-up" data-category="suv">
-                <div class="fleet-card-img"><img src="assets/fleet_suv.png" alt="Toyota Innova SUV rental"></div>
+                <div class="fleet-card-img"><img src="assets/fleet_creta_real.jpg" alt="Hyundai Creta SUV rental" style="object-position: center center;"></div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Toyota Innova</h3><p style="font-size:0.78rem; color:var(--text-muted);">SUV · Diesel</p></div>
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Hyundai Creta</h3><p style="font-size:0.78rem; color:var(--text-muted);">SUV · Petrol</p></div>
                         <span class="badge badge-active">Available</span>
                     </div>
                     <div class="fleet-card-price">₹1,699 <span>/ day</span></div>
                     <div class="fleet-card-features">
-                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 6+1</span>
-                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Manual</span>
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 4+1</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Auto</span>
                         <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
                         <span class="fleet-feat"><i class="fas fa-road" style="color:var(--primary);"></i> Unlimited</span>
                     </div>
@@ -267,15 +273,15 @@
 
             <!-- SUV 2 -->
             <div class="fleet-card animate-on-scroll slide-up" data-category="suv">
-                <div class="fleet-card-img"><img src="assets/fleet_suv.png" alt="Hyundai Creta rental"></div>
+                <div class="fleet-card-img"><img src="assets/fleet_xuv700.jpg" alt="Mahindra XUV700 rental"></div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Hyundai Creta</h3><p style="font-size:0.78rem; color:var(--text-muted);">SUV · Petrol</p></div>
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Mahindra XUV700</h3><p style="font-size:0.78rem; color:var(--text-muted);">SUV · Diesel</p></div>
                         <span class="badge badge-active">Available</span>
                     </div>
                     <div class="fleet-card-price">₹1,899 <span>/ day</span></div>
                     <div class="fleet-card-features">
-                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 4+1</span>
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 6+1</span>
                         <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Auto</span>
                         <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
                         <span class="fleet-feat"><i class="fas fa-map-marked-alt" style="color:var(--primary);"></i> GPS</span>
@@ -284,9 +290,9 @@
                 </div>
             </div>
 
-            <!-- Luxury -->
+            <!-- Luxury 1 -->
             <div class="fleet-card animate-on-scroll slide-up" data-category="luxury">
-                <div class="fleet-card-img"><img src="assets/fleet_luxury.png" alt="BMW 5 Series luxury rental"></div>
+                <div class="fleet-card-img"><img src="assets/fleet_bmw.jpg" alt="BMW 5 Series luxury rental"></div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
                         <div><h3 style="font-size:1rem; margin-bottom:2px;">BMW 5 Series</h3><p style="font-size:0.78rem; color:var(--text-muted);">Luxury · Petrol</p></div>
@@ -305,7 +311,7 @@
 
             <!-- Van -->
             <div class="fleet-card animate-on-scroll slide-up" data-category="van">
-                <div class="fleet-card-img"><img src="assets/fleet_van.png" alt="Force Traveller van rental"></div>
+                <div class="fleet-card-img"><img src="assets/fleet_traveller.jpg" alt="Force Traveller van rental"></div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
                         <div><h3 style="font-size:1rem; margin-bottom:2px;">Force Traveller</h3><p style="font-size:0.78rem; color:var(--text-muted);">Van · Diesel</p></div>
@@ -324,7 +330,7 @@
 
             <!-- Luxury 2 -->
             <div class="fleet-card animate-on-scroll slide-up" data-category="luxury">
-                <div class="fleet-card-img"><img src="assets/fleet_luxury.png" alt="Mercedes E-Class rental"></div>
+                <div class="fleet-card-img"><img src="assets/fleet_mercedes.jpg" alt="Mercedes E-Class rental"></div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
                         <div><h3 style="font-size:1rem; margin-bottom:2px;">Mercedes E-Class</h3><p style="font-size:0.78rem; color:var(--text-muted);">Luxury · Diesel</p></div>
@@ -345,28 +351,28 @@
 </section>
 
 <!-- FEATURES BAR -->
-<section class="section-sm" style="background:var(--secondary);">
+<section class="section-sm" style="background:var(--surface); border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light); margin-bottom:32px;">
     <div class="container">
         <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center;">
             <div class="animate-on-scroll zoom-in">
-                <i class="fas fa-shield-alt" style="color:var(--primary-light); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
-                <h4 style="color:#FFFFFF; font-size:0.9rem; margin-bottom:6px;">Fully Insured</h4>
-                <p style="color:rgba(255,255,255,0.5); font-size:0.8rem;">All vehicles comprehensively insured</p>
+                <i class="fas fa-shield-alt" style="color:var(--primary); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
+                <h4 style="color:var(--text-dark); font-size:0.9rem; margin-bottom:6px;">Fully Insured</h4>
+                <p style="color:var(--text-muted); font-size:0.8rem;">All vehicles comprehensively insured</p>
             </div>
             <div class="animate-on-scroll zoom-in">
-                <i class="fas fa-tools" style="color:var(--primary-light); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
-                <h4 style="color:#FFFFFF; font-size:0.9rem; margin-bottom:6px;">Well Maintained</h4>
-                <p style="color:rgba(255,255,255,0.5); font-size:0.8rem;">50-point inspection before every rental</p>
+                <i class="fas fa-tools" style="color:var(--primary); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
+                <h4 style="color:var(--text-dark); font-size:0.9rem; margin-bottom:6px;">Well Maintained</h4>
+                <p style="color:var(--text-muted); font-size:0.8rem;">50-point inspection before every rental</p>
             </div>
             <div class="animate-on-scroll zoom-in">
-                <i class="fas fa-phone-alt" style="color:var(--primary-light); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
-                <h4 style="color:#FFFFFF; font-size:0.9rem; margin-bottom:6px;">24/7 Support</h4>
-                <p style="color:rgba(255,255,255,0.5); font-size:0.8rem;">Roadside assistance anytime, anywhere</p>
+                <i class="fas fa-phone" style="color:var(--primary); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
+                <h4 style="color:var(--text-dark); font-size:0.9rem; margin-bottom:6px;">24/7 Support</h4>
+                <p style="color:var(--text-muted); font-size:0.8rem;">Roadside assistance anytime, anywhere</p>
             </div>
             <div class="animate-on-scroll zoom-in">
-                <i class="fas fa-undo" style="color:var(--primary-light); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
-                <h4 style="color:#FFFFFF; font-size:0.9rem; margin-bottom:6px;">Free Cancellation</h4>
-                <p style="color:rgba(255,255,255,0.5); font-size:0.8rem;">Cancel up to 24 hours before pickup</p>
+                <i class="fas fa-undo" style="color:var(--primary); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
+                <h4 style="color:var(--text-dark); font-size:0.9rem; margin-bottom:6px;">Free Cancellation</h4>
+                <p style="color:var(--text-muted); font-size:0.8rem;">Cancel up to 24 hours before pickup</p>
             </div>
         </div>
     </div>

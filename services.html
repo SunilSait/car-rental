@@ -58,57 +58,64 @@
         </a>
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
-            <a href="home2.html" class="nav-link">Premium</a>
+            <a href="home2.html" class="nav-link">Home 2</a>
             <a href="about.html" class="nav-link">About</a>
             <a href="services.html" class="nav-link active">Services</a>
             <a href="fleet.html" class="nav-link">Fleet</a>
             <a href="pricing.html" class="nav-link">Pricing</a>
             <a href="contact.html" class="nav-link">Contact</a>
-            <a href="dashboard.html" class="nav-link">Dashboard</a>
         </div>
         <div class="nav-actions">
             <button class="icon-btn dark-toggle" title="Toggle Dark Mode" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
             <button class="icon-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
             <a href="login.html" class="btn btn-secondary btn-sm">Sign In</a>
-            <a href="fleet.html" class="btn btn-primary btn-sm">Book Now</a>
+            <a href="dashboard.html" class="btn btn-primary btn-sm">Dashboard</a>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
     <div class="mobile-nav" id="mobile-nav">
         <a href="index.html" class="mobile-nav-link">Home</a>
-        <a href="home2.html" class="mobile-nav-link">Premium</a>
+        <a href="home2.html" class="mobile-nav-link">Home 2</a>
         <a href="about.html" class="mobile-nav-link">About</a>
         <a href="services.html" class="mobile-nav-link active">Services</a>
         <a href="fleet.html" class="mobile-nav-link">Fleet</a>
         <a href="pricing.html" class="mobile-nav-link">Pricing</a>
         <a href="contact.html" class="mobile-nav-link">Contact</a>
-        <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+        <div class="mobile-nav-toggles" style="display:flex; gap:10px; padding:10px 0 4px; border-top:1px solid var(--border-light); margin-top:6px;">
+            <button class="icon-btn dark-toggle" style="flex:1; justify-content:center; gap:8px; width:auto; height:40px; border-radius:var(--radius-md);" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i> <span style="font-size:0.85rem; font-weight:600;">Dark Mode</span>
+            </button>
+            <button class="icon-btn rtl-toggle" style="flex:1; justify-content:center; gap:8px; width:auto; height:40px; border-radius:var(--radius-md);" title="Toggle RTL" aria-label="Toggle RTL">
+                <i class="fas fa-exchange-alt"></i> <span style="font-size:0.85rem; font-weight:600;">RTL / LTR</span>
+            </button>
+        </div>
         <div class="mobile-nav-actions">
             <a href="login.html" class="btn btn-secondary">Sign In</a>
-            <a href="fleet.html" class="btn btn-primary">Book Now</a>
+            <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
         </div>
     </div>
 </nav>
 
-<!-- BANNER -->
+<!-- BANNER / HERO -->
 <section class="page-banner">
     <div class="page-banner-bg" style="background-image:url('assets/banner_services.png');"></div>
     <div class="page-banner-overlay"></div>
-    <div class="page-banner-content">
-        <div class="container">
-            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i><span>Services</span></nav>
-            <h1 style="color:#FFFFFF; font-size:clamp(1.8rem,4vw,2.8rem); margin-bottom:8px;">Our Services</h1>
-            <p style="color:rgba(255,255,255,0.7); font-size:0.95rem;">Everything you need for a seamless journey</p>
+    <div class="page-banner-content text-center">
+        <div class="container" style="max-width:780px; margin:0 auto;">
+            <nav class="breadcrumb" aria-label="Breadcrumb" style="justify-content:center; margin-bottom:20px;">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right" style="font-size:0.7rem; margin:0 8px;"></i>
+                <span>Services</span>
+            </nav>
+            <div class="section-tag" style="color:rgba(255,255,255,0.9); border-color:rgba(255,255,255,0.25); background:rgba(255,255,255,0.12); margin-bottom:18px;">What We Offer</div>
+            <h1 style="color:#FFFFFF; font-size:clamp(2.2rem,5vw,3.5rem); margin-bottom:16px; line-height:1.15;" class="animate-on-scroll slide-up">
+                Six Services. One Brand.<br>
+                <span style="background:linear-gradient(135deg,var(--primary-light),#93BFFF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">Zero Compromise.</span>
+            </h1>
+            <p style="color:rgba(255,255,255,0.8); font-size:1.05rem; line-height:1.7; margin:0 auto; max-width:600px;" class="animate-on-scroll slide-up">
+                From a quick city hop to a cross-state corporate trip — DriveEase has a tailored solution for every travel need.
+            </p>
         </div>
-    </div>
-</section>
-
-<!-- SERVICE INTRO -->
-<section class="section-sm" style="background:var(--surface-alt);">
-    <div class="container text-center">
-        <div class="section-tag">What We Offer</div>
-        <h2 class="section-title animate-on-scroll slide-up">Six Services. One Brand. Zero Compromise.</h2>
-        <p class="section-subtitle animate-on-scroll slide-up">From a quick city hop to a cross-state corporate trip — DriveEase has a tailored solution for every travel need.</p>
     </div>
 </section>
 
@@ -235,7 +242,7 @@
         <h2 style="color:#FFFFFF; margin-bottom:14px;" class="animate-on-scroll slide-up">Not Sure Which Service Is Right?</h2>
         <p style="color:rgba(255,255,255,0.75); max-width:460px; margin:0 auto 32px; font-size:0.95rem;" class="animate-on-scroll slide-up">Our team is happy to help you pick the best rental option for your needs.</p>
         <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;" class="animate-on-scroll zoom-in">
-            <a href="contact.html" class="btn btn-lg" style="background:#FFFFFF; color:var(--primary); font-weight:700;"><i class="fas fa-phone-alt"></i> Talk to Us</a>
+            <a href="contact.html" class="btn btn-lg" style="background:#FFFFFF; color:var(--primary); font-weight:700;"><i class="fas fa-phone"></i> Talk to Us</a>
             <a href="fleet.html" class="btn btn-lg" style="background:rgba(255,255,255,0.12); color:#fff; border:1.5px solid rgba(255,255,255,0.35);"><i class="fas fa-car"></i> View Fleet</a>
         </div>
     </div>

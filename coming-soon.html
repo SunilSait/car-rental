@@ -17,6 +17,138 @@
             0%, 100% { transform: translateX(0); }
             50% { transform: translateX(12px); }
         }
+        @media (max-width: 480px) {
+            #countdown-container { gap: 6px !important; }
+            .cd-number-box { width: 56px !important; height: 56px !important; font-size: 1.4rem !important; border-radius: 12px !important; }
+            .cd-colon { font-size: 1.2rem !important; padding-bottom: 16px !important; }
+        }
+
+        .cs-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 65px 24px 30px;
+            text-align: center;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        .dark .cs-page {
+            background: linear-gradient(145deg, var(--secondary-dark) 0%, var(--secondary) 60%, rgba(26,86,219,0.15) 100%);
+            color: #FFFFFF;
+        }
+
+        .cs-logo-text { color: var(--text-dark); }
+        .dark .cs-logo-text { color: #FFFFFF; }
+
+        .cs-heading { color: var(--text-dark); }
+        .dark .cs-heading { color: #FFFFFF; }
+
+        .cs-subtext { color: var(--text-muted); }
+        .dark .cs-subtext { color: rgba(255, 255, 255, 0.7); }
+
+        .cd-number-box {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+        .dark .cd-number-box {
+            color: var(--primary-light);
+            background: rgba(26,86,219,0.15);
+            border: 1px solid rgba(26,86,219,0.3);
+            box-shadow: none;
+        }
+
+        .cd-label-text {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+        .dark .cd-label-text { color: rgba(255,255,255,0.45); }
+
+        .cs-input {
+            flex: 1;
+            min-width: 180px;
+            padding: 13px 18px;
+            border-radius: 50px;
+            border: 1.5px solid var(--border-light);
+            background: var(--surface);
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .dark .cs-input {
+            border: 1.5px solid rgba(26,86,219,0.35);
+            background: rgba(255,255,255,0.07);
+            color: #FFFFFF;
+        }
+        .cs-muted-note {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 12px;
+        }
+        .dark .cs-muted-note { color: rgba(255, 255, 255, 0.4); }
+
+        .cs-social-link {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-light);
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            background: var(--surface);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .cs-social-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .dark .cs-social-link {
+            border: 1px solid rgba(26, 86, 219, 0.3);
+            color: rgba(255, 255, 255, 0.6);
+            background: transparent;
+        }
+        .dark .cs-social-link:hover {
+            border-color: var(--primary-light);
+            color: var(--primary-light);
+        }
+
+        .cs-back-link {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .cs-back-link:hover { color: var(--primary); }
+        .dark .cs-back-link { color: rgba(255, 255, 255, 0.6); }
+        .dark .cs-back-link:hover { color: var(--primary-light); }
     </style>
 </head>
 <body>
@@ -27,7 +159,7 @@
     <button class="icon-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
 </div>
 
-<div style="min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:48px 24px; text-align:center; background:linear-gradient(145deg,var(--secondary-dark) 0%,var(--secondary) 60%,rgba(26,86,219,0.15) 100%); position:relative; overflow:hidden;">
+<div class="cs-page">
 
     <!-- Background decorations -->
     <div style="position:absolute; inset:0; pointer-events:none; overflow:hidden;">
@@ -41,52 +173,55 @@
     </div>
 
     <div style="position:relative; z-index:1; max-width:640px; width:100%;">
-        <!-- Logo -->
-        <a href="index.html" style="display:inline-flex; align-items:center; gap:10px; font-family:var(--font-heading); font-size:1.3rem; font-weight:700; color:#FFFFFF; text-decoration:none; margin-bottom:48px; transition:opacity 0.2s;" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
-            <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100" height="100" rx="18" fill="var(--primary)"/>
-                <path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/>
-                <circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/>
-                <circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/>
-            </svg>
-            DriveEase
-        </a>
+        <!-- Header: Logo & Badge -->
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; margin-bottom:28px;">
+            <!-- Logo -->
+            <a href="index.html" class="cs-logo-text" style="display:inline-flex; align-items:center; gap:10px; font-family:var(--font-heading); font-size:1.35rem; font-weight:700; text-decoration:none; transition:opacity 0.2s;" onmouseover="this.style.opacity=0.75" onmouseout="this.style.opacity=1">
+                <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" rx="18" fill="var(--primary)"/>
+                    <path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/>
+                    <circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/>
+                    <circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/>
+                </svg>
+                DriveEase
+            </a>
 
-        <!-- Badge -->
-        <div style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; border-radius:50px; border:1px solid rgba(26,86,219,0.5); background:rgba(26,86,219,0.12); margin-bottom:24px;">
-            <span style="width:7px; height:7px; border-radius:50%; background:var(--primary-light); animation:pulse 1.5s ease-in-out infinite;"></span>
-            <span style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:var(--primary-light);">New Features Coming</span>
-            <span style="width:7px; height:7px; border-radius:50%; background:var(--primary-light); animation:pulse 1.5s ease-in-out infinite 0.7s;"></span>
+            <!-- Badge -->
+            <div style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; border-radius:50px; border:1px solid rgba(26,86,219,0.5); background:rgba(26,86,219,0.12);">
+                <span style="width:7px; height:7px; border-radius:50%; background:var(--primary-light); animation:pulse 1.5s ease-in-out infinite;"></span>
+                <span style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:var(--primary-light);">New Features Coming</span>
+                <span style="width:7px; height:7px; border-radius:50%; background:var(--primary-light); animation:pulse 1.5s ease-in-out infinite 0.7s;"></span>
+            </div>
         </div>
 
-        <h1 style="color:#FFFFFF; font-size:clamp(2rem,5vw,3.5rem); line-height:1.1; margin-bottom:18px;">
+        <h1 class="cs-heading" style="font-size:clamp(2rem,5vw,3.5rem); line-height:1.1; margin-bottom:18px;">
             Something Exciting<br>
             <span style="background:linear-gradient(135deg,var(--primary-light),#93BFFF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">Is Hitting the Road</span>
         </h1>
-        <p style="color:rgba(255,255,255,0.6); font-size:1.05rem; line-height:1.7; margin-bottom:40px; max-width:480px; margin-left:auto; margin-right:auto;">
+        <p class="cs-subtext" style="font-size:1.05rem; line-height:1.7; margin-bottom:40px; max-width:480px; margin-left:auto; margin-right:auto;">
             We're gearing up to launch new vehicle categories, a revamped app, and exciting features that will transform how you rent. Be the first to know.
         </p>
 
         <!-- Countdown -->
         <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:44px;" id="countdown-container">
             <div style="display:flex; flex-direction:column; align-items:center;">
-                <div id="cd-days" style="width:72px; height:72px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-family:var(--font-heading); font-size:2rem; font-weight:700; color:var(--primary-light); background:rgba(26,86,219,0.15); border:1px solid rgba(26,86,219,0.3);">21</div>
-                <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; margin-top:8px; font-weight:600;">Days</div>
+                <div id="cd-days" class="cd-number-box">21</div>
+                <div class="cd-label-text">Days</div>
             </div>
-            <div style="color:rgba(26,86,219,0.5); font-size:1.8rem; font-weight:300; padding-bottom:20px;">:</div>
+            <div class="cd-colon" style="color:rgba(26,86,219,0.5); font-size:1.8rem; font-weight:300; padding-bottom:20px;">:</div>
             <div style="display:flex; flex-direction:column; align-items:center;">
-                <div id="cd-hours" style="width:72px; height:72px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-family:var(--font-heading); font-size:2rem; font-weight:700; color:var(--primary-light); background:rgba(26,86,219,0.15); border:1px solid rgba(26,86,219,0.3);">00</div>
-                <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; margin-top:8px; font-weight:600;">Hours</div>
+                <div id="cd-hours" class="cd-number-box">00</div>
+                <div class="cd-label-text">Hours</div>
             </div>
-            <div style="color:rgba(26,86,219,0.5); font-size:1.8rem; font-weight:300; padding-bottom:20px;">:</div>
+            <div class="cd-colon" style="color:rgba(26,86,219,0.5); font-size:1.8rem; font-weight:300; padding-bottom:20px;">:</div>
             <div style="display:flex; flex-direction:column; align-items:center;">
-                <div id="cd-mins" style="width:72px; height:72px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-family:var(--font-heading); font-size:2rem; font-weight:700; color:var(--primary-light); background:rgba(26,86,219,0.15); border:1px solid rgba(26,86,219,0.3);">00</div>
-                <div style="font-size:0.72rem; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; margin-top:8px; font-weight:600;">Minutes</div>
+                <div id="cd-mins" class="cd-number-box">00</div>
+                <div class="cd-label-text">Minutes</div>
             </div>
-            <div style="color:rgba(26,86,219,0.5); font-size:1.8rem; font-weight:300; padding-bottom:20px;">:</div>
+            <div class="cd-colon" style="color:rgba(26,86,219,0.5); font-size:1.8rem; font-weight:300; padding-bottom:20px;">:</div>
             <div style="display:flex; flex-direction:column; align-items:center;">
-                <div id="cd-secs" style="width:72px; height:72px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-family:var(--font-heading); font-size:2rem; font-weight:700; color:var(--primary-light); background:rgba(26,86,219,0.15); border:1px solid rgba(26,86,219,0.3);">00</div>
-                <div style="font-size:0.72px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.12em; margin-top:8px; font-weight:600;">Seconds</div>
+                <div id="cd-secs" class="cd-number-box">00</div>
+                <div class="cd-label-text">Seconds</div>
             </div>
         </div>
 
@@ -94,10 +229,9 @@
         <div style="max-width:480px; margin:0 auto 36px;">
             <form id="cs-form" onsubmit="submitNotify(event)">
                 <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                    <input type="email" required placeholder="your@email.com" id="cs-email"
-                        style="flex:1; min-width:180px; padding:13px 18px; border-radius:50px; border:1.5px solid rgba(26,86,219,0.35); background:rgba(255,255,255,0.07); color:#FFFFFF; font-size:0.9rem; outline:none; transition:all 0.3s;"
+                    <input type="email" required placeholder="your@email.com" id="cs-email" class="cs-input"
                         onfocus="this.style.borderColor='var(--primary-light)'"
-                        onblur="this.style.borderColor='rgba(26,86,219,0.35)'"
+                        onblur="this.style.borderColor='var(--border-light)'"
                     >
                     <button type="submit" class="btn btn-primary" style="border-radius:50px; white-space:nowrap; flex-shrink:0;">
                         <i class="fas fa-bell"></i> Notify Me
@@ -107,18 +241,18 @@
             <p id="cs-success" class="hidden" style="color:#4ADE80; font-weight:600; margin-top:14px; font-size:0.9rem;">
                 <i class="fas fa-check-circle"></i> You're on the list! We'll send you updates soon.
             </p>
-            <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); margin-top:12px;">No spam. One email when we launch.</p>
+            <p class="cs-muted-note">No spam. One email when we launch.</p>
         </div>
 
         <!-- Social -->
         <div style="display:flex; justify-content:center; gap:12px; margin-bottom:36px;">
-            <a href="#" style="width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(26,86,219,0.3); color:rgba(255,255,255,0.45); font-size:0.85rem; transition:all 0.3s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary-light)'" onmouseout="this.style.borderColor='rgba(26,86,219,0.3)';this.style.color='rgba(255,255,255,0.45)'" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" style="width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(26,86,219,0.3); color:rgba(255,255,255,0.45); font-size:0.85rem; transition:all 0.3s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary-light)'" onmouseout="this.style.borderColor='rgba(26,86,219,0.3)';this.style.color='rgba(255,255,255,0.45)'" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" style="width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(26,86,219,0.3); color:rgba(255,255,255,0.45); font-size:0.85rem; transition:all 0.3s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary-light)'" onmouseout="this.style.borderColor='rgba(26,86,219,0.3)';this.style.color='rgba(255,255,255,0.45)'" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" style="width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(26,86,219,0.3); color:rgba(255,255,255,0.45); font-size:0.85rem; transition:all 0.3s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary-light)'" onmouseout="this.style.borderColor='rgba(26,86,219,0.3)';this.style.color='rgba(255,255,255,0.45)'" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="cs-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="cs-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="cs-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="cs-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         </div>
 
-        <a href="index.html" style="font-size:0.8rem; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.15em; font-weight:600; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--primary-light)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">
+        <a href="index.html" class="cs-back-link">
             ← Return to Main Site
         </a>
     </div>

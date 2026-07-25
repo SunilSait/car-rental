@@ -370,10 +370,25 @@ input, textarea, select, button {
     box-shadow: 0 0 0 3px var(--primary-glow);
 }
 
-.dark .form-input {
-    background: var(--surface-alt);
+.dark .form-input,
+.dark .form-select {
+    background-color: var(--surface-alt);
     border-color: var(--border-light);
     color: var(--text-dark);
+}
+
+.dark .form-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+.dark .form-select option {
+    background-color: var(--surface-alt);
+    color: var(--text-dark);
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+    cursor: pointer;
 }
 
 textarea.form-input { resize: vertical; min-height: 120px; }
@@ -716,7 +731,7 @@ textarea.form-input { resize: vertical; min-height: 120px; }
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px;
+    padding: 75px 20px 40px;
     position: relative;
     background: var(--bg-light);
     overflow: hidden;
@@ -745,8 +760,8 @@ textarea.form-input { resize: vertical; min-height: 120px; }
 }
 
 .auth-top-icons {
-    position: fixed;
-    top: 20px;
+    position: absolute;
+    top: 16px;
     right: 20px;
     display: flex;
     gap: 8px;
@@ -754,6 +769,14 @@ textarea.form-input { resize: vertical; min-height: 120px; }
 }
 
 [dir="rtl"] .auth-top-icons { right: auto; left: 20px; }
+
+input[type="tel"] {
+    text-align: left;
+}
+
+[dir="rtl"] input[type="tel"] {
+    text-align: right;
+}
 
 .auth-card {
     background: var(--surface);
@@ -939,6 +962,26 @@ textarea.form-input { resize: vertical; min-height: 120px; }
     margin-bottom: 7px;
 }
 
+.search-field .form-input,
+.search-field .form-select {
+    height: 48px;
+    background-color: var(--bg-light);
+    border-color: var(--border-light);
+    color: var(--text-dark);
+}
+
+.dark .search-field .form-input,
+.dark .search-field .form-select {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #FFFFFF;
+}
+
+.dark .search-field .form-select option {
+    background-color: #1A2035;
+    color: #FFFFFF;
+}
+
 /* ============================================================
    FLEET CARD
    ============================================================ */
@@ -961,23 +1004,24 @@ textarea.form-input { resize: vertical; min-height: 120px; }
 .dark .fleet-card { background: var(--surface-alt); border-color: var(--border-light); }
 
 .fleet-card-img {
-    height: 180px;
+    height: 200px;
     overflow: hidden;
     background: var(--surface-alt);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 0;
 }
 
 .fleet-card-img img {
-    max-height: 100%;
+    height: 100%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center 80%;
     transition: transform 0.4s ease;
 }
 
-.fleet-card:hover .fleet-card-img img { transform: scale(1.05); }
+.fleet-card:hover .fleet-card-img img { transform: scale(1.06); }
 
 .fleet-card-body { padding: 20px; flex: 1; }
 
@@ -1093,17 +1137,19 @@ textarea.form-input { resize: vertical; min-height: 120px; }
    ============================================================ */
 .page-banner {
     position: relative;
-    height: 300px;
+    min-height: 440px;
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
+    padding: 110px 0 80px;
 }
 
 .page-banner-bg {
     position: absolute;
     inset: 0;
     background-size: cover;
-    background-position: center;
+    background-position: center 60%;
 }
 
 .page-banner-overlay {
@@ -1117,11 +1163,13 @@ textarea.form-input { resize: vertical; min-height: 120px; }
     z-index: 2;
     color: #FFFFFF;
     width: 100%;
+    text-align: center;
 }
 
 .breadcrumb {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     font-size: 0.82rem;
     color: rgba(255,255,255,0.65);
@@ -1256,7 +1304,7 @@ textarea.form-input { resize: vertical; min-height: 120px; }
 
     .hamburger { display: flex; }
     .nav-links { display: none; }
-    .nav-actions .btn { display: none; }
+    .nav-actions { display: none !important; }
 }
 
 /* Tablet 768px */
@@ -1292,7 +1340,7 @@ textarea.form-input { resize: vertical; min-height: 120px; }
         grid-template-columns: 1fr;
     }
 
-    .page-banner { height: 220px; }
+    .page-banner { min-height: 320px; padding: 90px 0 60px; }
 }
 
 /* Mobile — 360px */
@@ -1315,5 +1363,5 @@ textarea.form-input { resize: vertical; min-height: 120px; }
     .stat-number { font-size: 1.5rem; }
 
     .fleet-card-img { height: 140px; }
-    .page-banner { height: 180px; }
+    .page-banner { min-height: 280px; padding: 75px 0 45px; }
 }

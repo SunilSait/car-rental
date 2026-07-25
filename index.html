@@ -185,13 +185,12 @@
 
         <div class="nav-links">
             <a href="index.html" class="nav-link active">Home</a>
-            <a href="home2.html" class="nav-link">Premium</a>
+            <a href="home2.html" class="nav-link">Home 2</a>
             <a href="about.html" class="nav-link">About</a>
             <a href="services.html" class="nav-link">Services</a>
             <a href="fleet.html" class="nav-link">Fleet</a>
             <a href="pricing.html" class="nav-link">Pricing</a>
             <a href="contact.html" class="nav-link">Contact</a>
-            <a href="dashboard.html" class="nav-link">Dashboard</a>
         </div>
 
         <div class="nav-actions">
@@ -202,7 +201,7 @@
                 <i class="fas fa-exchange-alt"></i>
             </button>
             <a href="login.html" class="btn btn-secondary btn-sm">Sign In</a>
-            <a href="fleet.html" class="btn btn-primary btn-sm">Book Now</a>
+            <a href="dashboard.html" class="btn btn-primary btn-sm">Dashboard</a>
         </div>
 
         <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -212,16 +211,23 @@
 
     <div class="mobile-nav" id="mobile-nav">
         <a href="index.html" class="mobile-nav-link active">Home</a>
-        <a href="home2.html" class="mobile-nav-link">Premium</a>
+        <a href="home2.html" class="mobile-nav-link">Home 2</a>
         <a href="about.html" class="mobile-nav-link">About</a>
         <a href="services.html" class="mobile-nav-link">Services</a>
         <a href="fleet.html" class="mobile-nav-link">Fleet</a>
         <a href="pricing.html" class="mobile-nav-link">Pricing</a>
         <a href="contact.html" class="mobile-nav-link">Contact</a>
-        <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+        <div class="mobile-nav-toggles" style="display:flex; gap:10px; padding:10px 0 4px; border-top:1px solid var(--border-light); margin-top:6px;">
+            <button class="icon-btn dark-toggle" style="flex:1; justify-content:center; gap:8px; width:auto; height:40px; border-radius:var(--radius-md);" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i> <span style="font-size:0.85rem; font-weight:600;">Dark Mode</span>
+            </button>
+            <button class="icon-btn rtl-toggle" style="flex:1; justify-content:center; gap:8px; width:auto; height:40px; border-radius:var(--radius-md);" title="Toggle RTL" aria-label="Toggle RTL">
+                <i class="fas fa-exchange-alt"></i> <span style="font-size:0.85rem; font-weight:600;">RTL / LTR</span>
+            </button>
+        </div>
         <div class="mobile-nav-actions">
             <a href="login.html" class="btn btn-secondary">Sign In</a>
-            <a href="fleet.html" class="btn btn-primary">Book Now</a>
+            <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
         </div>
     </div>
 </nav>
@@ -234,7 +240,7 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <div class="container">
-            <div style="max-width:680px; margin-bottom:40px;">
+            <div style="max-width:680px; margin:0 auto 40px; text-align:center;">
                 <div class="section-tag animate-on-scroll zoom-in" style="color:#fff; border-color:rgba(255,255,255,0.25); background:rgba(255,255,255,0.08);">
                     <i class="fas fa-circle" style="font-size:0.4rem; color:#4ADE80;"></i>
                     Available Now — 500+ Vehicles
@@ -243,10 +249,10 @@
                     Drive Anywhere.<br>
                     <span class="gradient-text">On Your Terms.</span>
                 </h1>
-                <p class="animate-on-scroll slide-up" style="color:rgba(255,255,255,0.75); font-size:1.1rem; line-height:1.7; margin-bottom:32px; max-width:560px;">
+                <p class="animate-on-scroll slide-up" style="color:rgba(255,255,255,0.75); font-size:1.1rem; line-height:1.7; margin:0 auto 32px; max-width:560px;">
                     Choose from our premium fleet of self-drive vehicles. Transparent pricing, flexible rentals, and pickup across 12+ city locations.
                 </p>
-                <div class="animate-on-scroll slide-up" style="display:flex; gap:14px; flex-wrap:wrap;">
+                <div class="animate-on-scroll slide-up" style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
                     <a href="fleet.html" class="btn btn-primary btn-lg">
                         <i class="fas fa-car"></i> Browse Fleet
                     </a>
@@ -257,7 +263,7 @@
             </div>
 
             <!-- Search Widget -->
-            <div class="search-widget animate-on-scroll slide-up" style="max-width:900px;">
+            <div class="search-widget animate-on-scroll slide-up" style="max-width:900px; margin-left:auto; margin-right:auto;">
                 <div class="search-grid">
                     <div class="search-field">
                         <label for="pickup-location"><i class="fas fa-map-marker-alt" style="color:var(--primary); margin-right:4px;"></i> Pickup Location</label>
@@ -340,7 +346,7 @@
             <!-- Hatchback -->
             <div class="fleet-card animate-on-scroll slide-up">
                 <div class="fleet-card-img">
-                    <img src="assets/fleet_hatchback.png" alt="Hatchback rental car">
+                    <img src="assets/card_hatchback_new.png" alt="Hatchback rental car">
                 </div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
@@ -364,7 +370,7 @@
             <!-- Sedan -->
             <div class="fleet-card animate-on-scroll slide-up">
                 <div class="fleet-card-img">
-                    <img src="assets/fleet_sedan.png" alt="Sedan rental car">
+                    <img src="assets/card_sedan_new.png" alt="Sedan rental car">
                 </div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
@@ -388,7 +394,7 @@
             <!-- SUV -->
             <div class="fleet-card animate-on-scroll slide-up">
                 <div class="fleet-card-img">
-                    <img src="assets/fleet_suv.png" alt="SUV rental car">
+                    <img src="assets/card_suv_new.png" alt="SUV rental car">
                 </div>
                 <div class="fleet-card-body">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
@@ -502,7 +508,7 @@
                     <h4 style="font-size:0.95rem; margin-bottom:6px;">Safe & Sanitized</h4>
                     <p style="font-size:0.82rem; color:var(--text-muted);">Deep cleaned and sanitized before every rental.</p>
                 </div>
-                <div class="why-card" style="margin-top:24px;">
+                <div class="why-card">
                     <div class="feature-icon-box"><i class="fas fa-clock fa-lg"></i></div>
                     <h4 style="font-size:0.95rem; margin-bottom:6px;">Flexible Hours</h4>
                     <p style="font-size:0.82rem; color:var(--text-muted);">Pick up or drop off any time, 365 days a year.</p>
@@ -512,7 +518,7 @@
                     <h4 style="font-size:0.95rem; margin-bottom:6px;">Best Rates</h4>
                     <p style="font-size:0.82rem; color:var(--text-muted);">Competitive pricing with loyalty rewards and discounts.</p>
                 </div>
-                <div class="why-card" style="margin-top:24px;">
+                <div class="why-card">
                     <div class="feature-icon-box"><i class="fas fa-map-marked-alt fa-lg"></i></div>
                     <h4 style="font-size:0.95rem; margin-bottom:6px;">GPS Equipped</h4>
                     <p style="font-size:0.82rem; color:var(--text-muted);">Built-in GPS in select vehicles for easier navigation.</p>
@@ -574,7 +580,7 @@
                 </div>
                 <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.7; margin-bottom:18px;">"Booked a sedan for a Chennai to Coimbatore road trip. The car was in excellent condition, the booking process was super smooth, and the price was very fair. Will definitely use DriveEase again!"</p>
                 <div style="display:flex; align-items:center; gap:12px;">
-                    <div class="testimonial-avatar-placeholder">RK</div>
+                    <img src="assets/avatar_rajesh.png" alt="Rajesh Kumar" class="testimonial-avatar">
                     <div>
                         <p style="font-size:0.9rem; font-weight:600; margin-bottom:2px;">Rajesh Kumar</p>
                         <p style="font-size:0.78rem; color:var(--text-muted);">Software Engineer, Chennai</p>
@@ -587,7 +593,7 @@
                 </div>
                 <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.7; margin-bottom:18px;">"Took an SUV for a family trip to Ooty. The vehicle was clean, well-maintained, and perfect for the hilly terrain. Customer support was responsive and very helpful throughout our trip."</p>
                 <div style="display:flex; align-items:center; gap:12px;">
-                    <div class="testimonial-avatar-placeholder" style="background:linear-gradient(135deg,#D97706,#B45309);">PM</div>
+                    <img src="assets/avatar_priya.png" alt="Priya Muthukumar" class="testimonial-avatar">
                     <div>
                         <p style="font-size:0.9rem; font-weight:600; margin-bottom:2px;">Priya Muthukumar</p>
                         <p style="font-size:0.78rem; color:var(--text-muted);">Doctor, Coimbatore</p>
@@ -600,7 +606,7 @@
                 </div>
                 <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.7; margin-bottom:18px;">"I use DriveEase almost every weekend. The loyalty points system is great, and I got a free upgrade on my 10th booking. The dashboard is super easy to use for managing bookings and extensions."</p>
                 <div style="display:flex; align-items:center; gap:12px;">
-                    <div class="testimonial-avatar-placeholder" style="background:linear-gradient(135deg,#7C3AED,#5B21B6);">AV</div>
+                    <img src="assets/avatar_arjun.png" alt="Arjun Venkatesh" class="testimonial-avatar">
                     <div>
                         <p style="font-size:0.9rem; font-weight:600; margin-bottom:2px;">Arjun Venkatesh</p>
                         <p style="font-size:0.78rem; color:var(--text-muted);">Business Owner, Madurai</p>
