@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DriveEase Fleet — Browse hatchbacks, sedans, SUVs, luxury vehicles and vans with daily pricing and availability. Book online instantly.">
+    <title>Our Fleet | DriveEase Car Rental</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231A56DB'/%3E%3Cpath d='M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z' fill='white'/%3E%3Ccircle cx='32' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='32' cy='70' r='3' fill='white'/%3E%3Ccircle cx='68' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='68' cy='70' r='3' fill='white'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Filter tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 36px;
+        }
+        .filter-tab {
+            padding: 9px 22px;
+            border-radius: 50px;
+            border: 1.5px solid var(--border-light);
+            background: var(--surface);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .filter-tab:hover { border-color: var(--primary); color: var(--primary); }
+        .filter-tab.active { background: var(--primary); color: #FFFFFF; border-color: var(--primary); }
+        .dark .filter-tab { background: var(--surface-alt); }
+
+        /* Fleet grid */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 1024px) { .fleet-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 580px) { .fleet-grid { grid-template-columns: 1fr; } }
+
+        /* Availability legend */
+        .availability-legend {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .avail-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <svg width="34" height="34" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="var(--primary)"/><path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/><circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/><circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/></svg>
+            <span>DriveEase</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="home2.html" class="nav-link">Premium</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="fleet.html" class="nav-link active">Fleet</a>
+            <a href="pricing.html" class="nav-link">Pricing</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+        </div>
+        <div class="nav-actions">
+            <button class="icon-btn dark-toggle" title="Toggle Dark Mode" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+            <button class="icon-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+            <a href="login.html" class="btn btn-secondary btn-sm">Sign In</a>
+            <a href="fleet.html" class="btn btn-primary btn-sm">Book Now</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="home2.html" class="mobile-nav-link">Premium</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="services.html" class="mobile-nav-link">Services</a>
+        <a href="fleet.html" class="mobile-nav-link active">Fleet</a>
+        <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+        <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+        <div class="mobile-nav-actions">
+            <a href="login.html" class="btn btn-secondary">Sign In</a>
+            <a href="fleet.html" class="btn btn-primary">Book Now</a>
+        </div>
+    </div>
+</nav>
+
+<!-- BANNER -->
+<section class="page-banner">
+    <div class="page-banner-bg" style="background-image:url('assets/banner_services.png');"></div>
+    <div class="page-banner-overlay"></div>
+    <div class="page-banner-content">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i><span>Fleet</span></nav>
+            <h1 style="color:#FFFFFF; font-size:clamp(1.8rem,4vw,2.8rem); margin-bottom:8px;">Our Fleet</h1>
+            <p style="color:rgba(255,255,255,0.7); font-size:0.95rem;">500+ vehicles across 5 categories — find your perfect match</p>
+        </div>
+    </div>
+</section>
+
+<!-- AVAILABILITY CHECK -->
+<section style="background:var(--surface); border-bottom:1px solid var(--border-light); padding:28px 0;">
+    <div class="container">
+        <div style="background:var(--surface-alt); border:1px solid var(--border-light); border-radius:var(--radius-xl); padding:24px;">
+            <div style="font-family:var(--font-heading); font-size:1rem; font-weight:700; color:var(--text-dark); margin-bottom:16px;">
+                <i class="fas fa-calendar-check" style="color:var(--primary); margin-right:8px;"></i>
+                Check Availability by Date
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr auto; gap:14px; align-items:end;">
+                <div class="form-group">
+                    <label class="form-label" for="avail-pickup">Pickup Date</label>
+                    <input type="date" class="form-input" id="avail-pickup">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="avail-return">Return Date</label>
+                    <input type="date" class="form-input" id="avail-return">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="avail-city">City</label>
+                    <select class="form-select" id="avail-city">
+                        <option>All Cities</option>
+                        <option>Chennai</option>
+                        <option>Coimbatore</option>
+                        <option>Madurai</option>
+                        <option>Tiruchirappalli</option>
+                        <option>Salem</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" style="height:49px; white-space:nowrap;">
+                    <i class="fas fa-search"></i> Check
+                </button>
+            </div>
+            <div style="display:flex; gap:20px; margin-top:14px; flex-wrap:wrap;">
+                <div class="availability-legend">
+                    <div style="display:flex; align-items:center; gap:6px; font-size:0.78rem; color:var(--text-muted);">
+                        <div class="avail-dot" style="background:#16A34A;"></div> Available
+                    </div>
+                    <div style="display:flex; align-items:center; gap:6px; font-size:0.78rem; color:var(--text-muted);">
+                        <div class="avail-dot" style="background:#D97706;"></div> Limited
+                    </div>
+                    <div style="display:flex; align-items:center; gap:6px; font-size:0.78rem; color:var(--text-muted);">
+                        <div class="avail-dot" style="background:#DC2626;"></div> Unavailable
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FLEET LISTING -->
+<section class="section" style="background:var(--bg-light);">
+    <div class="container">
+        <!-- Filter tabs -->
+        <div class="filter-tabs" data-tabs>
+            <button class="filter-tab active" data-tab="all" onclick="filterFleet('all')">All Vehicles</button>
+            <button class="filter-tab" data-tab="hatchback" onclick="filterFleet('hatchback')">Hatchback</button>
+            <button class="filter-tab" data-tab="sedan" onclick="filterFleet('sedan')">Sedan</button>
+            <button class="filter-tab" data-tab="suv" onclick="filterFleet('suv')">SUV</button>
+            <button class="filter-tab" data-tab="luxury" onclick="filterFleet('luxury')">Luxury</button>
+            <button class="filter-tab" data-tab="van" onclick="filterFleet('van')">Van / MUV</button>
+        </div>
+
+        <div class="fleet-grid" id="fleet-grid">
+            <!-- Hatchback 1 -->
+            <div class="fleet-card animate-on-scroll slide-up" data-category="hatchback">
+                <div class="fleet-card-img"><img src="assets/fleet_hatchback.png" alt="Maruti Swift hatchback rental"></div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Maruti Swift</h3><p style="font-size:0.78rem; color:var(--text-muted);">Hatchback · Petrol</p></div>
+                        <span class="badge badge-active">Available</span>
+                    </div>
+                    <div class="fleet-card-price">₹799 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 4+1</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Manual</span>
+                        <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
+                        <span class="fleet-feat"><i class="fas fa-road" style="color:var(--primary);"></i> 100 km/day</span>
+                    </div>
+                    <a href="login.html" class="btn btn-primary btn-full" style="margin-top:16px;">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Hatchback 2 -->
+            <div class="fleet-card animate-on-scroll slide-up" data-category="hatchback">
+                <div class="fleet-card-img"><img src="assets/fleet_hatchback.png" alt="Hyundai i20 rental"></div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Hyundai i20</h3><p style="font-size:0.78rem; color:var(--text-muted);">Hatchback · Petrol</p></div>
+                        <span class="badge badge-active">Available</span>
+                    </div>
+                    <div class="fleet-card-price">₹899 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 4+1</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Auto</span>
+                        <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
+                        <span class="fleet-feat"><i class="fas fa-road" style="color:var(--primary);"></i> 120 km/day</span>
+                    </div>
+                    <a href="login.html" class="btn btn-primary btn-full" style="margin-top:16px;">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Sedan 1 -->
+            <div class="fleet-card animate-on-scroll slide-up" data-category="sedan">
+                <div class="fleet-card-img"><img src="assets/fleet_sedan.png" alt="Honda City sedan rental"></div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Honda City</h3><p style="font-size:0.78rem; color:var(--text-muted);">Sedan · Petrol</p></div>
+                        <span class="badge badge-active">Available</span>
+                    </div>
+                    <div class="fleet-card-price">₹1,199 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 4+1</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Auto</span>
+                        <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
+                        <span class="fleet-feat"><i class="fas fa-road" style="color:var(--primary);"></i> Unlimited</span>
+                    </div>
+                    <a href="login.html" class="btn btn-primary btn-full" style="margin-top:16px;">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Sedan 2 -->
+            <div class="fleet-card animate-on-scroll slide-up" data-category="sedan">
+                <div class="fleet-card-img"><img src="assets/fleet_sedan.png" alt="Toyota Yaris rental"></div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Toyota Yaris</h3><p style="font-size:0.78rem; color:var(--text-muted);">Sedan · Petrol</p></div>
+                        <span class="badge badge-pending">Limited</span>
+                    </div>
+                    <div class="fleet-card-price">₹1,299 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 4+1</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Auto</span>
+                        <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
+                        <span class="fleet-feat"><i class="fas fa-map-marked-alt" style="color:var(--primary);"></i> GPS</span>
+                    </div>
+                    <a href="login.html" class="btn btn-primary btn-full" style="margin-top:16px;">Book Now</a>
+                </div>
+            </div>
+
+            <!-- SUV 1 -->
+            <div class="fleet-card animate-on-scroll slide-up" data-category="suv">
+                <div class="fleet-card-img"><img src="assets/fleet_suv.png" alt="Toyota Innova SUV rental"></div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Toyota Innova</h3><p style="font-size:0.78rem; color:var(--text-muted);">SUV · Diesel</p></div>
+                        <span class="badge badge-active">Available</span>
+                    </div>
+                    <div class="fleet-card-price">₹1,699 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 6+1</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Manual</span>
+                        <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
+                        <span class="fleet-feat"><i class="fas fa-road" style="color:var(--primary);"></i> Unlimited</span>
+                    </div>
+                    <a href="login.html" class="btn btn-primary btn-full" style="margin-top:16px;">Book Now</a>
+                </div>
+            </div>
+
+            <!-- SUV 2 -->
+            <div class="fleet-card animate-on-scroll slide-up" data-category="suv">
+                <div class="fleet-card-img"><img src="assets/fleet_suv.png" alt="Hyundai Creta rental"></div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Hyundai Creta</h3><p style="font-size:0.78rem; color:var(--text-muted);">SUV · Petrol</p></div>
+                        <span class="badge badge-active">Available</span>
+                    </div>
+                    <div class="fleet-card-price">₹1,899 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 4+1</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Auto</span>
+                        <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
+                        <span class="fleet-feat"><i class="fas fa-map-marked-alt" style="color:var(--primary);"></i> GPS</span>
+                    </div>
+                    <a href="login.html" class="btn btn-primary btn-full" style="margin-top:16px;">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Luxury -->
+            <div class="fleet-card animate-on-scroll slide-up" data-category="luxury">
+                <div class="fleet-card-img"><img src="assets/fleet_luxury.png" alt="BMW 5 Series luxury rental"></div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">BMW 5 Series</h3><p style="font-size:0.78rem; color:var(--text-muted);">Luxury · Petrol</p></div>
+                        <span class="badge badge-active">Available</span>
+                    </div>
+                    <div class="fleet-card-price">₹3,499 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 4+1</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Auto</span>
+                        <span class="fleet-feat"><i class="fas fa-shield-alt" style="color:var(--primary);"></i> Full Cover</span>
+                        <span class="fleet-feat"><i class="fas fa-map-marked-alt" style="color:var(--primary);"></i> GPS</span>
+                    </div>
+                    <a href="login.html" class="btn btn-primary btn-full" style="margin-top:16px;">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Van -->
+            <div class="fleet-card animate-on-scroll slide-up" data-category="van">
+                <div class="fleet-card-img"><img src="assets/fleet_van.png" alt="Force Traveller van rental"></div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Force Traveller</h3><p style="font-size:0.78rem; color:var(--text-muted);">Van · Diesel</p></div>
+                        <span class="badge badge-active">Available</span>
+                    </div>
+                    <div class="fleet-card-price">₹2,999 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 12+1</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Manual</span>
+                        <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
+                        <span class="fleet-feat"><i class="fas fa-suitcase" style="color:var(--primary);"></i> Large Boot</span>
+                    </div>
+                    <a href="login.html" class="btn btn-primary btn-full" style="margin-top:16px;">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Luxury 2 -->
+            <div class="fleet-card animate-on-scroll slide-up" data-category="luxury">
+                <div class="fleet-card-img"><img src="assets/fleet_luxury.png" alt="Mercedes E-Class rental"></div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div><h3 style="font-size:1rem; margin-bottom:2px;">Mercedes E-Class</h3><p style="font-size:0.78rem; color:var(--text-muted);">Luxury · Diesel</p></div>
+                        <span class="badge badge-pending">Limited</span>
+                    </div>
+                    <div class="fleet-card-price">₹4,999 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 4+1</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Auto</span>
+                        <span class="fleet-feat"><i class="fas fa-shield-alt" style="color:var(--primary);"></i> Comp. Cover</span>
+                        <span class="fleet-feat"><i class="fas fa-headset" style="color:var(--primary);"></i> Concierge</span>
+                    </div>
+                    <a href="login.html" class="btn btn-primary btn-full" style="margin-top:16px;">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES BAR -->
+<section class="section-sm" style="background:var(--secondary);">
+    <div class="container">
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center;">
+            <div class="animate-on-scroll zoom-in">
+                <i class="fas fa-shield-alt" style="color:var(--primary-light); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
+                <h4 style="color:#FFFFFF; font-size:0.9rem; margin-bottom:6px;">Fully Insured</h4>
+                <p style="color:rgba(255,255,255,0.5); font-size:0.8rem;">All vehicles comprehensively insured</p>
+            </div>
+            <div class="animate-on-scroll zoom-in">
+                <i class="fas fa-tools" style="color:var(--primary-light); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
+                <h4 style="color:#FFFFFF; font-size:0.9rem; margin-bottom:6px;">Well Maintained</h4>
+                <p style="color:rgba(255,255,255,0.5); font-size:0.8rem;">50-point inspection before every rental</p>
+            </div>
+            <div class="animate-on-scroll zoom-in">
+                <i class="fas fa-phone-alt" style="color:var(--primary-light); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
+                <h4 style="color:#FFFFFF; font-size:0.9rem; margin-bottom:6px;">24/7 Support</h4>
+                <p style="color:rgba(255,255,255,0.5); font-size:0.8rem;">Roadside assistance anytime, anywhere</p>
+            </div>
+            <div class="animate-on-scroll zoom-in">
+                <i class="fas fa-undo" style="color:var(--primary-light); font-size:1.8rem; margin-bottom:12px; display:block;"></i>
+                <h4 style="color:#FFFFFF; font-size:0.9rem; margin-bottom:6px;">Free Cancellation</h4>
+                <p style="color:rgba(255,255,255,0.5); font-size:0.8rem;">Cancel up to 24 hours before pickup</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand"><div class="footer-logo"><svg width="30" height="30" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="var(--primary)"/><path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/><circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/><circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/></svg>DriveEase</div><p>Your trusted self-drive car rental partner across Tamil Nadu.</p><div class="footer-socials"><a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a></div></div>
+        <div class="footer-col"><h4>Quick Links</h4><div class="footer-links"><a href="index.html" class="footer-link">Home</a><a href="about.html" class="footer-link">About Us</a><a href="services.html" class="footer-link">Services</a><a href="fleet.html" class="footer-link">Our Fleet</a><a href="pricing.html" class="footer-link">Pricing</a><a href="contact.html" class="footer-link">Contact</a></div></div>
+        <div class="footer-col"><h4>Support</h4><div class="footer-links"><a href="dashboard.html" class="footer-link">Customer Dashboard</a><a href="login.html" class="footer-link">Sign In</a><a href="signup.html" class="footer-link">Sign Up</a><a href="404.html" class="footer-link">404 Page</a><a href="coming-soon.html" class="footer-link">Coming Soon</a></div></div>
+        <div class="footer-col"><h4>Contact Us</h4><div class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 98765 43210</div><div class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@driveease.in</div></div>
+    </div>
+    <div class="footer-bottom" style="max-width:1200px; margin:0 auto;"><p>© 2025 DriveEase. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+function filterFleet(category) {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.fleet-card[data-category]').forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+</body>
+</html>

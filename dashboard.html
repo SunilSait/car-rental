@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DriveEase Customer Dashboard — Manage active bookings, view rental history, extend rentals, and download agreements.">
+    <title>Dashboard | DriveEase Car Rental</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231A56DB'/%3E%3Cpath d='M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z' fill='white'/%3E%3Ccircle cx='32' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='32' cy='70' r='3' fill='white'/%3E%3Ccircle cx='68' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='68' cy='70' r='3' fill='white'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+    <a href="index.html" class="sidebar-logo">
+        <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="18" fill="var(--primary)"/>
+            <path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/>
+            <circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/>
+            <circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/>
+        </svg>
+        DriveEase
+    </a>
+
+    <nav class="sidebar-nav">
+        <div class="sidebar-section">Main</div>
+        <a href="dashboard.html" class="sidebar-link active" id="nav-overview">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Overview
+        </a>
+        <a href="#" class="sidebar-link" onclick="showSection('bookings',this)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Active Bookings
+            <span class="sidebar-badge">2</span>
+        </a>
+        <a href="#" class="sidebar-link" onclick="showSection('history',this)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Rental History
+        </a>
+        <a href="#" class="sidebar-link" onclick="showSection('availability',this)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Check Availability
+        </a>
+
+        <div class="sidebar-section">Account</div>
+        <a href="#" class="sidebar-link" onclick="showSection('profile',this)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            My Profile
+        </a>
+        <a href="#" class="sidebar-link" onclick="showSection('documents',this)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Documents
+        </a>
+        <a href="#" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M20 12h2M2 12h2M12 20v2M12 2v2"/></svg>
+            Settings
+        </a>
+        <a href="#" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Support / FAQs
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">RK</div>
+            <div class="sidebar-user-info">
+                <div class="sidebar-user-name">Rajesh Kumar</div>
+                <div class="sidebar-user-role">Premium Member</div>
+            </div>
+        </div>
+        <button class="sidebar-logout" onclick="window.location.href='login.html'">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Sign Out
+        </button>
+    </div>
+</aside>
+
+<!-- Sidebar overlay for mobile -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="dash-header-left">
+            <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <div>
+                <div class="dash-page-title" id="page-title">Overview</div>
+                <div class="dash-page-subtitle" id="page-subtitle">Welcome back, Rajesh</div>
+            </div>
+        </div>
+        <div class="dash-header-right">
+            <button id="dash-theme-toggle" class="icon-btn" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="notif-wrapper">
+                <button class="notif-btn" id="notif-btn" aria-label="Notifications">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    <div class="notif-dot"></div>
+                </button>
+                <div class="notif-panel hidden" id="notif-panel">
+                    <div class="notif-header">
+                        <h4>Notifications</h4>
+                        <button class="notif-mark-all" id="notif-mark-all">Mark all read</button>
+                    </div>
+                    <div class="notif-item unread">
+                        <div class="notif-icon" style="background:rgba(26,86,219,0.1); color:var(--primary);">🚗</div>
+                        <div class="notif-text"><p>Your Honda City rental starts tomorrow. Pickup at Chennai Central.</p><span>2 hours ago</span></div>
+                    </div>
+                    <div class="notif-item unread">
+                        <div class="notif-icon" style="background:rgba(22,163,74,0.1); color:#16A34A;">✅</div>
+                        <div class="notif-text"><p>Rental agreement for Booking #DR-2024-009 is ready to download.</p><span>5 hours ago</span></div>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-icon" style="background:rgba(217,119,6,0.1); color:#D97706;">🎁</div>
+                        <div class="notif-text"><p>Congrats! You've earned 250 loyalty points from your last rental.</p><span>1 day ago</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-wrapper">
+                <button class="profile-btn" id="profile-btn" aria-label="Profile menu">
+                    <div class="profile-avatar">RK</div>
+                    <span class="profile-btn-name">Rajesh K.</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="profile-menu hidden" id="profile-menu">
+                    <a href="#" class="profile-menu-item" onclick="showSection('profile',null)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        My Profile
+                    </a>
+                    <a href="#" class="profile-menu-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41"/></svg>
+                        Settings
+                    </a>
+                    <div class="profile-menu-divider"></div>
+                    <button class="profile-menu-item danger" onclick="window.location.href='login.html'">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Body -->
+    <main class="dashboard-body">
+
+        <!-- ============================================================
+             OVERVIEW SECTION
+             ============================================================ -->
+        <div id="section-overview">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="welcome-text">
+                    <div class="welcome-greeting">Good Morning</div>
+                    <div class="welcome-name">Rajesh Kumar 👋</div>
+                    <div class="welcome-sub">You have 2 active rentals and 1 upcoming. Have a great drive today!</div>
+                </div>
+                <div class="welcome-actions">
+                    <a href="fleet.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Book a Car
+                    </a>
+                </div>
+            </div>
+
+            <!-- Metric Cards -->
+            <div class="metrics-grid">
+                <div class="metric-card metric-primary">
+                    <div class="metric-icon metric-icon-primary"><i class="fas fa-car fa-lg"></i></div>
+                    <div class="metric-value">2</div>
+                    <div class="metric-label">Active Rentals</div>
+                    <div class="metric-change up"><i class="fas fa-arrow-up" style="font-size:0.6rem;"></i> 1 this week</div>
+                </div>
+                <div class="metric-card metric-success">
+                    <div class="metric-icon metric-icon-success"><i class="fas fa-check-circle fa-lg"></i></div>
+                    <div class="metric-value">14</div>
+                    <div class="metric-label">Completed Trips</div>
+                    <div class="metric-change up"><i class="fas fa-arrow-up" style="font-size:0.6rem;"></i> All time</div>
+                </div>
+                <div class="metric-card metric-warning">
+                    <div class="metric-icon metric-icon-warning"><i class="fas fa-star fa-lg"></i></div>
+                    <div class="metric-value">1,250</div>
+                    <div class="metric-label">Loyalty Points</div>
+                    <div class="metric-change up"><i class="fas fa-arrow-up" style="font-size:0.6rem;"></i> +250 last trip</div>
+                </div>
+                <div class="metric-card metric-info">
+                    <div class="metric-icon metric-icon-info"><i class="fas fa-rupee-sign fa-lg"></i></div>
+                    <div class="metric-value">₹8.4K</div>
+                    <div class="metric-label">Total Spent</div>
+                    <div class="metric-change down"><i class="fas fa-arrow-down" style="font-size:0.6rem;"></i> This month</div>
+                </div>
+            </div>
+
+            <!-- Active Bookings Table + Quick Actions -->
+            <div style="display:grid; grid-template-columns:2fr 1fr; gap:24px; margin-bottom:24px;">
+                <!-- Active Bookings -->
+                <div class="dash-table-wrapper">
+                    <div class="dash-table-header">
+                        <div class="dash-table-title">Active Bookings</div>
+                        <a href="#" onclick="showSection('bookings',null)" style="font-size:0.8rem; color:var(--primary); font-weight:600;">View All</a>
+                    </div>
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Vehicle</th>
+                                <th>Dates</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight:600; color:var(--primary);">#DR-2024-010</td>
+                                <td>
+                                    <div style="font-weight:600; font-size:0.875rem;">Honda City</div>
+                                    <div style="font-size:0.75rem; color:var(--text-muted);">Sedan · Chennai</div>
+                                </td>
+                                <td>
+                                    <div style="font-size:0.82rem;">26 Jul – 28 Jul</div>
+                                    <div style="font-size:0.75rem; color:var(--text-muted);">3 days</div>
+                                </td>
+                                <td><span class="badge badge-active">Active</span></td>
+                                <td>
+                                    <div style="display:flex; gap:8px; align-items:center;">
+                                        <button onclick="openExtendModal()" class="btn btn-sm btn-primary" style="font-size:0.75rem; padding:5px 10px;">Extend</button>
+                                        <button onclick="downloadAgreement()" class="btn btn-sm btn-secondary" style="font-size:0.75rem; padding:5px 10px;" title="Download Agreement">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight:600; color:var(--primary);">#DR-2024-011</td>
+                                <td>
+                                    <div style="font-weight:600; font-size:0.875rem;">Hyundai Creta</div>
+                                    <div style="font-size:0.75rem; color:var(--text-muted);">SUV · Coimbatore</div>
+                                </td>
+                                <td>
+                                    <div style="font-size:0.82rem;">27 Jul – 30 Jul</div>
+                                    <div style="font-size:0.75rem; color:var(--text-muted);">4 days</div>
+                                </td>
+                                <td><span class="badge badge-pending">Upcoming</span></td>
+                                <td>
+                                    <div style="display:flex; gap:8px; align-items:center;">
+                                        <button class="btn btn-sm btn-secondary" style="font-size:0.75rem; padding:5px 10px;">Details</button>
+                                        <button onclick="downloadAgreement()" class="btn btn-sm" style="font-size:0.75rem; padding:5px 10px; background:var(--surface-alt); border:1px solid var(--border-light);" title="Download Agreement">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Quick Actions -->
+                <div>
+                    <div style="font-family:var(--font-heading); font-size:1rem; font-weight:700; color:var(--text-dark); margin-bottom:16px;">Quick Actions</div>
+                    <div class="quick-actions-grid" style="grid-template-columns:1fr 1fr;">
+                        <a href="fleet.html" class="quick-action-card">
+                            <div class="quick-action-icon"><i class="fas fa-car"></i></div>
+                            <div class="quick-action-text"><h4>Book Car</h4><p>New rental</p></div>
+                        </a>
+                        <a href="#" class="quick-action-card" onclick="showSection('availability',null)">
+                            <div class="quick-action-icon" style="background:rgba(22,163,74,0.1); color:#16A34A;"><i class="fas fa-calendar-check"></i></div>
+                            <div class="quick-action-text"><h4>Availability</h4><p>Check dates</p></div>
+                        </a>
+                        <a href="#" class="quick-action-card" onclick="openExtendModal()">
+                            <div class="quick-action-icon" style="background:rgba(217,119,6,0.1); color:#D97706;"><i class="fas fa-clock"></i></div>
+                            <div class="quick-action-text"><h4>Extend</h4><p>Add more days</p></div>
+                        </a>
+                        <a href="#" class="quick-action-card" onclick="downloadAgreement()">
+                            <div class="quick-action-icon" style="background:rgba(14,165,233,0.1); color:#0EA5E9;"><i class="fas fa-file-download"></i></div>
+                            <div class="quick-action-text"><h4>Agreement</h4><p>Download PDF</p></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent History -->
+            <div class="dash-table-wrapper">
+                <div class="dash-table-header">
+                    <div class="dash-table-title">Recent Rental History</div>
+                    <a href="#" onclick="showSection('history',null)" style="font-size:0.8rem; color:var(--primary); font-weight:600;">View Full History</a>
+                </div>
+                <table class="dash-table">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Vehicle</th>
+                            <th>Duration</th>
+                            <th>Total Paid</th>
+                            <th>Status</th>
+                            <th>Download</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:600;">#DR-2024-009</td>
+                            <td><div style="font-weight:600; font-size:0.85rem;">Toyota Innova</div><div style="font-size:0.75rem; color:var(--text-muted);">SUV · Chennai</div></td>
+                            <td><div style="font-size:0.82rem;">18 Jul – 21 Jul</div><div style="font-size:0.75rem; color:var(--text-muted);">4 days</div></td>
+                            <td style="font-weight:600;">₹6,796</td>
+                            <td><span class="badge badge-active">Completed</span></td>
+                            <td><button onclick="downloadAgreement()" class="btn btn-sm" style="font-size:0.75rem; padding:5px 10px; background:var(--primary-glow); color:var(--primary); border:1px solid rgba(26,86,219,0.2);"><i class="fas fa-download"></i> PDF</button></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600;">#DR-2024-008</td>
+                            <td><div style="font-weight:600; font-size:0.85rem;">Maruti Swift</div><div style="font-size:0.75rem; color:var(--text-muted);">Hatchback · Madurai</div></td>
+                            <td><div style="font-size:0.82rem;">10 Jul – 12 Jul</div><div style="font-size:0.75rem; color:var(--text-muted);">3 days</div></td>
+                            <td style="font-weight:600;">₹2,397</td>
+                            <td><span class="badge badge-active">Completed</span></td>
+                            <td><button onclick="downloadAgreement()" class="btn btn-sm" style="font-size:0.75rem; padding:5px 10px; background:var(--primary-glow); color:var(--primary); border:1px solid rgba(26,86,219,0.2);"><i class="fas fa-download"></i> PDF</button></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600;">#DR-2024-007</td>
+                            <td><div style="font-weight:600; font-size:0.85rem;">Honda City</div><div style="font-size:0.75rem; color:var(--text-muted);">Sedan · Salem</div></td>
+                            <td><div style="font-size:0.82rem;">1 Jul – 3 Jul</div><div style="font-size:0.75rem; color:var(--text-muted);">3 days</div></td>
+                            <td style="font-weight:600;">₹3,597</td>
+                            <td><span class="badge badge-active">Completed</span></td>
+                            <td><button onclick="downloadAgreement()" class="btn btn-sm" style="font-size:0.75rem; padding:5px 10px; background:var(--primary-glow); color:var(--primary); border:1px solid rgba(26,86,219,0.2);"><i class="fas fa-download"></i> PDF</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             BOOKINGS SECTION
+             ============================================================ -->
+        <div id="section-bookings" class="hidden">
+            <div class="dash-table-wrapper">
+                <div class="dash-table-header">
+                    <div class="dash-table-title">All Active Bookings</div>
+                    <a href="fleet.html" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> New Booking</a>
+                </div>
+                <table class="dash-table">
+                    <thead>
+                        <tr><th>Booking ID</th><th>Vehicle</th><th>Pickup</th><th>Return</th><th>Days</th><th>Amount</th><th>Status</th><th>Actions</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:600; color:var(--primary);">#DR-2024-010</td>
+                            <td><div style="font-weight:600;">Honda City</div><div style="font-size:0.75rem; color:var(--text-muted);">Sedan · Chennai Central</div></td>
+                            <td>26 Jul 2025<br><span style="font-size:0.75rem; color:var(--text-muted);">9:00 AM</span></td>
+                            <td>28 Jul 2025<br><span style="font-size:0.75rem; color:var(--text-muted);">9:00 AM</span></td>
+                            <td>3</td>
+                            <td style="font-weight:600;">₹3,597</td>
+                            <td><span class="badge badge-active">Active</span></td>
+                            <td>
+                                <div style="display:flex; gap:6px;">
+                                    <button onclick="openExtendModal()" class="btn btn-sm btn-primary" style="font-size:0.72rem; padding:4px 8px;">Extend</button>
+                                    <button onclick="downloadAgreement()" class="btn btn-sm btn-secondary" style="font-size:0.72rem; padding:4px 8px;"><i class="fas fa-download"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600; color:var(--primary);">#DR-2024-011</td>
+                            <td><div style="font-weight:600;">Hyundai Creta</div><div style="font-size:0.75rem; color:var(--text-muted);">SUV · Coimbatore</div></td>
+                            <td>27 Jul 2025<br><span style="font-size:0.75rem; color:var(--text-muted);">10:00 AM</span></td>
+                            <td>30 Jul 2025<br><span style="font-size:0.75rem; color:var(--text-muted);">10:00 AM</span></td>
+                            <td>4</td>
+                            <td style="font-weight:600;">₹7,596</td>
+                            <td><span class="badge badge-pending">Upcoming</span></td>
+                            <td>
+                                <div style="display:flex; gap:6px;">
+                                    <button class="btn btn-sm btn-secondary" style="font-size:0.72rem; padding:4px 8px;">Details</button>
+                                    <button onclick="downloadAgreement()" class="btn btn-sm" style="font-size:0.72rem; padding:4px 8px; background:var(--surface-alt); border:1px solid var(--border-light);"><i class="fas fa-download"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             HISTORY SECTION
+             ============================================================ -->
+        <div id="section-history" class="hidden">
+            <div class="dash-table-wrapper">
+                <div class="dash-table-header">
+                    <div class="dash-table-title">Full Rental History</div>
+                    <div style="font-size:0.82rem; color:var(--text-muted);">14 completed rentals</div>
+                </div>
+                <table class="dash-table">
+                    <thead>
+                        <tr><th>Booking ID</th><th>Vehicle</th><th>Pickup</th><th>Return</th><th>Location</th><th>Amount</th><th>Status</th><th>Agreement</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="font-weight:600;">#DR-2024-009</td><td><div style="font-weight:600;">Toyota Innova</div><div style="font-size:0.75rem; color:var(--text-muted);">SUV</div></td><td style="font-size:0.82rem;">18 Jul</td><td style="font-size:0.82rem;">21 Jul</td><td style="font-size:0.82rem;">Chennai</td><td style="font-weight:600;">₹6,796</td><td><span class="badge badge-active">Completed</span></td><td><button onclick="downloadAgreement()" class="btn btn-sm" style="font-size:0.72rem; padding:4px 8px; background:var(--primary-glow); color:var(--primary); border:1px solid rgba(26,86,219,0.2);"><i class="fas fa-download"></i> PDF</button></td></tr>
+                        <tr><td style="font-weight:600;">#DR-2024-008</td><td><div style="font-weight:600;">Maruti Swift</div><div style="font-size:0.75rem; color:var(--text-muted);">Hatchback</div></td><td style="font-size:0.82rem;">10 Jul</td><td style="font-size:0.82rem;">12 Jul</td><td style="font-size:0.82rem;">Madurai</td><td style="font-weight:600;">₹2,397</td><td><span class="badge badge-active">Completed</span></td><td><button onclick="downloadAgreement()" class="btn btn-sm" style="font-size:0.72rem; padding:4px 8px; background:var(--primary-glow); color:var(--primary); border:1px solid rgba(26,86,219,0.2);"><i class="fas fa-download"></i> PDF</button></td></tr>
+                        <tr><td style="font-weight:600;">#DR-2024-007</td><td><div style="font-weight:600;">Honda City</div><div style="font-size:0.75rem; color:var(--text-muted);">Sedan</div></td><td style="font-size:0.82rem;">1 Jul</td><td style="font-size:0.82rem;">3 Jul</td><td style="font-size:0.82rem;">Salem</td><td style="font-weight:600;">₹3,597</td><td><span class="badge badge-active">Completed</span></td><td><button onclick="downloadAgreement()" class="btn btn-sm" style="font-size:0.72rem; padding:4px 8px; background:var(--primary-glow); color:var(--primary); border:1px solid rgba(26,86,219,0.2);"><i class="fas fa-download"></i> PDF</button></td></tr>
+                        <tr><td style="font-weight:600;">#DR-2024-006</td><td><div style="font-weight:600;">BMW 5 Series</div><div style="font-size:0.75rem; color:var(--text-muted);">Luxury</div></td><td style="font-size:0.82rem;">15 Jun</td><td style="font-size:0.82rem;">16 Jun</td><td style="font-size:0.82rem;">Chennai</td><td style="font-weight:600;">₹3,499</td><td><span class="badge badge-active">Completed</span></td><td><button onclick="downloadAgreement()" class="btn btn-sm" style="font-size:0.72rem; padding:4px 8px; background:var(--primary-glow); color:var(--primary); border:1px solid rgba(26,86,219,0.2);"><i class="fas fa-download"></i> PDF</button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             AVAILABILITY SECTION
+             ============================================================ -->
+        <div id="section-availability" class="hidden">
+            <div class="dash-table-wrapper" style="padding:28px;">
+                <h3 style="margin-bottom:6px;">Check Vehicle Availability</h3>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:24px;">Enter your dates and city to see which vehicles are available.</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr auto; gap:16px; align-items:end;">
+                    <div class="form-group">
+                        <label class="form-label" for="d-pickup-date">Pickup Date</label>
+                        <input type="date" class="form-input" id="d-pickup-date">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="d-return-date">Return Date</label>
+                        <input type="date" class="form-input" id="d-return-date">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="d-city">City</label>
+                        <select class="form-select" id="d-city">
+                            <option>All Cities</option>
+                            <option>Chennai</option><option>Coimbatore</option><option>Madurai</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" style="height:49px;" onclick="checkAvailability()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+                <div id="avail-results" style="margin-top:24px; display:none;">
+                    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+                        <div style="background:var(--surface-alt); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:18px;">
+                            <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:8px;">Hatchback</div>
+                            <div style="font-size:1.4rem; font-weight:700; color:var(--primary);">12</div>
+                            <div style="font-size:0.8rem; color:var(--text-muted);">Available</div>
+                            <a href="fleet.html" class="btn btn-primary btn-sm btn-full" style="margin-top:14px;">Book</a>
+                        </div>
+                        <div style="background:var(--surface-alt); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:18px;">
+                            <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:8px;">Sedan</div>
+                            <div style="font-size:1.4rem; font-weight:700; color:var(--primary);">8</div>
+                            <div style="font-size:0.8rem; color:var(--text-muted);">Available</div>
+                            <a href="fleet.html" class="btn btn-primary btn-sm btn-full" style="margin-top:14px;">Book</a>
+                        </div>
+                        <div style="background:var(--surface-alt); border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:18px;">
+                            <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:8px;">SUV</div>
+                            <div style="font-size:1.4rem; font-weight:700; color:#D97706;">3</div>
+                            <div style="font-size:0.8rem; color:var(--text-muted);">Limited</div>
+                            <a href="fleet.html" class="btn btn-primary btn-sm btn-full" style="margin-top:14px;">Book</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             PROFILE SECTION
+             ============================================================ -->
+        <div id="section-profile" class="hidden">
+            <div style="display:grid; grid-template-columns:1fr 2fr; gap:24px;">
+                <div class="dash-table-wrapper" style="padding:28px; text-align:center;">
+                    <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--primary-dark)); display:flex; align-items:center; justify-content:center; font-family:var(--font-heading); font-size:2rem; font-weight:700; color:#fff; margin:0 auto 16px;">RK</div>
+                    <h3 style="margin-bottom:4px;">Rajesh Kumar</h3>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:16px;">Premium Member</p>
+                    <div style="background:var(--primary-glow); border:1px solid rgba(26,86,219,0.2); border-radius:var(--radius-md); padding:14px; margin-bottom:16px; text-align:left;">
+                        <div style="font-size:0.72rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:4px;">Loyalty Points</div>
+                        <div style="font-size:1.6rem; font-weight:700; color:var(--primary); font-family:var(--font-heading);">1,250 <span style="font-size:0.9rem; color:var(--text-muted); font-weight:400;">pts</span></div>
+                    </div>
+                    <button class="btn btn-secondary btn-full" style="font-size:0.82rem;">Change Photo</button>
+                </div>
+                <div class="dash-table-wrapper" style="padding:28px;">
+                    <h3 style="margin-bottom:20px;">Personal Information</h3>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-input" value="Rajesh">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-input" value="Kumar">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:16px;">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" value="rajesh.kumar@email.com">
+                    </div>
+                    <div class="form-group" style="margin-bottom:16px;">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-input" value="+91 98765 43210">
+                    </div>
+                    <div class="form-group" style="margin-bottom:24px;">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-input" value="42 Nehru Street, T. Nagar, Chennai">
+                    </div>
+                    <button class="btn btn-primary" onclick="alert('Profile saved successfully!')">Save Changes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             DOCUMENTS SECTION
+             ============================================================ -->
+        <div id="section-documents" class="hidden">
+            <div class="dash-table-wrapper" style="padding:28px;">
+                <h3 style="margin-bottom:6px;">My Documents</h3>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:24px;">Download your rental agreements and uploaded documents.</p>
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                    <div style="display:flex; align-items:center; justify-content:space-between; padding:16px; background:var(--surface-alt); border:1px solid var(--border-light); border-radius:var(--radius-md);">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div style="width:40px; height:40px; background:rgba(220,38,38,0.1); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; color:#DC2626;"><i class="fas fa-file-pdf"></i></div>
+                            <div><div style="font-weight:600; font-size:0.88rem;">Rental Agreement — #DR-2024-010</div><div style="font-size:0.75rem; color:var(--text-muted);">Honda City · 26–28 Jul 2025</div></div>
+                        </div>
+                        <button onclick="downloadAgreement()" class="btn btn-sm btn-primary"><i class="fas fa-download"></i> Download</button>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content:space-between; padding:16px; background:var(--surface-alt); border:1px solid var(--border-light); border-radius:var(--radius-md);">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div style="width:40px; height:40px; background:rgba(220,38,38,0.1); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; color:#DC2626;"><i class="fas fa-file-pdf"></i></div>
+                            <div><div style="font-weight:600; font-size:0.88rem;">Rental Agreement — #DR-2024-009</div><div style="font-size:0.75rem; color:var(--text-muted);">Toyota Innova · 18–21 Jul 2025</div></div>
+                        </div>
+                        <button onclick="downloadAgreement()" class="btn btn-sm btn-primary"><i class="fas fa-download"></i> Download</button>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content:space-between; padding:16px; background:var(--surface-alt); border:1px solid var(--border-light); border-radius:var(--radius-md);">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div style="width:40px; height:40px; background:rgba(26,86,219,0.1); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; color:var(--primary);"><i class="fas fa-id-card"></i></div>
+                            <div><div style="font-weight:600; font-size:0.88rem;">Driving License (Verified)</div><div style="font-size:0.75rem; color:var(--text-muted);">Uploaded 15 Jan 2025 · Expires Dec 2030</div></div>
+                        </div>
+                        <span class="badge badge-active">Verified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- EXTEND MODAL -->
+<div id="extend-modal" class="hidden" style="position:fixed; inset:0; z-index:500; display:flex; align-items:center; justify-content:center; padding:20px; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px);">
+    <div style="background:var(--surface); border-radius:var(--radius-xl); padding:32px; max-width:440px; width:100%; position:relative; box-shadow:0 24px 64px rgba(0,0,0,0.3);">
+        <button onclick="closeExtendModal()" style="position:absolute; top:16px; right:16px; background:var(--surface-alt); border:1px solid var(--border-light); border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text-muted);">
+            <i class="fas fa-times" style="font-size:0.8rem;"></i>
+        </button>
+        <h3 style="margin-bottom:6px;">Extend Rental</h3>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:24px;">Booking #DR-2024-010 — Honda City</p>
+        <div class="form-group" style="margin-bottom:16px;">
+            <label class="form-label" for="ext-days">Additional Days</label>
+            <select class="form-select" id="ext-days">
+                <option>1 day — ₹1,199</option>
+                <option>2 days — ₹2,398</option>
+                <option>3 days — ₹3,597</option>
+                <option>7 days — ₹8,393</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-bottom:24px;">
+            <label class="form-label" for="ext-newreturn">New Return Date</label>
+            <input type="date" class="form-input" id="ext-newreturn" value="2025-07-29">
+        </div>
+        <button class="btn btn-primary btn-full" onclick="confirmExtend()">Confirm Extension</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+// Section navigation
+function showSection(section, linkEl) {
+    // Hide all sections
+    document.querySelectorAll('[id^="section-"]').forEach(s => s.classList.add('hidden'));
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    // Show target
+    document.getElementById('section-' + section).classList.remove('hidden');
+    if (linkEl) linkEl.classList.add('active');
+    // Update header
+    const titles = { overview:'Overview', bookings:'Active Bookings', history:'Rental History', availability:'Check Availability', profile:'My Profile', documents:'Documents' };
+    document.getElementById('page-title').textContent = titles[section] || section;
+    // Close profile menu
+    document.getElementById('profile-menu').classList.add('hidden');
+}
+
+// Extend modal
+function openExtendModal() {
+    document.getElementById('extend-modal').classList.remove('hidden');
+}
+function closeExtendModal() {
+    document.getElementById('extend-modal').classList.add('hidden');
+}
+function confirmExtend() {
+    closeExtendModal();
+    const toast = document.createElement('div');
+    toast.textContent = '✅ Rental extended successfully!';
+    toast.style.cssText = 'position:fixed;bottom:28px;right:28px;background:#16A34A;color:#fff;padding:14px 22px;border-radius:12px;font-size:0.88rem;font-weight:600;z-index:999;box-shadow:0 8px 32px rgba(0,0,0,0.3);';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+// Download agreement (mock)
+function downloadAgreement() {
+    const toast = document.createElement('div');
+    toast.textContent = '📄 Rental Agreement download started!';
+    toast.style.cssText = 'position:fixed;bottom:28px;right:28px;background:var(--primary);color:#fff;padding:14px 22px;border-radius:12px;font-size:0.88rem;font-weight:600;z-index:999;box-shadow:0 8px 32px rgba(0,0,0,0.3);';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+// Availability check (mock)
+function checkAvailability() {
+    document.getElementById('avail-results').style.display = 'block';
+}
+
+// Date setup
+const today = new Date().toISOString().split('T')[0];
+document.querySelectorAll('input[type="date"]').forEach(i => i.min = today);
+document.getElementById('d-pickup-date').value = today;
+</script>
+</body>
+</html>

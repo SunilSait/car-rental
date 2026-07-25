@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DriveEase Services — Self-drive, Chauffeur, Airport Transfer, Corporate Hire, Long-term Rentals. Professional car rental solutions for every need.">
+    <title>Services | DriveEase Car Rental</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231A56DB'/%3E%3Cpath d='M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z' fill='white'/%3E%3Ccircle cx='32' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='32' cy='70' r='3' fill='white'/%3E%3Ccircle cx='68' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='68' cy='70' r='3' fill='white'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .service-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            padding: 64px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .service-block:last-of-type { border-bottom: none; }
+        .service-block.reverse { direction: rtl; }
+        .service-block.reverse > * { direction: ltr; }
+        [dir="rtl"] .service-block.reverse { direction: ltr; }
+        [dir="rtl"] .service-block.reverse > * { direction: rtl; }
+        .service-img {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: 0 20px 60px var(--shadow-base);
+        }
+        .service-img img {
+            width: 100%; height: 320px; object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .service-img:hover img { transform: scale(1.04); }
+        .service-feature-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0 28px; }
+        .service-feature-item {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.875rem; color: var(--text-muted);
+        }
+        .service-feature-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: var(--primary); flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .service-block { grid-template-columns: 1fr; gap: 28px; direction: ltr !important; }
+            .service-block > * { direction: ltr !important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <svg width="34" height="34" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="var(--primary)"/><path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/><circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/><circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/></svg>
+            <span>DriveEase</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="home2.html" class="nav-link">Premium</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="services.html" class="nav-link active">Services</a>
+            <a href="fleet.html" class="nav-link">Fleet</a>
+            <a href="pricing.html" class="nav-link">Pricing</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+        </div>
+        <div class="nav-actions">
+            <button class="icon-btn dark-toggle" title="Toggle Dark Mode" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+            <button class="icon-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+            <a href="login.html" class="btn btn-secondary btn-sm">Sign In</a>
+            <a href="fleet.html" class="btn btn-primary btn-sm">Book Now</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="home2.html" class="mobile-nav-link">Premium</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="services.html" class="mobile-nav-link active">Services</a>
+        <a href="fleet.html" class="mobile-nav-link">Fleet</a>
+        <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+        <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+        <div class="mobile-nav-actions">
+            <a href="login.html" class="btn btn-secondary">Sign In</a>
+            <a href="fleet.html" class="btn btn-primary">Book Now</a>
+        </div>
+    </div>
+</nav>
+
+<!-- BANNER -->
+<section class="page-banner">
+    <div class="page-banner-bg" style="background-image:url('assets/banner_services.png');"></div>
+    <div class="page-banner-overlay"></div>
+    <div class="page-banner-content">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i><span>Services</span></nav>
+            <h1 style="color:#FFFFFF; font-size:clamp(1.8rem,4vw,2.8rem); margin-bottom:8px;">Our Services</h1>
+            <p style="color:rgba(255,255,255,0.7); font-size:0.95rem;">Everything you need for a seamless journey</p>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICE INTRO -->
+<section class="section-sm" style="background:var(--surface-alt);">
+    <div class="container text-center">
+        <div class="section-tag">What We Offer</div>
+        <h2 class="section-title animate-on-scroll slide-up">Six Services. One Brand. Zero Compromise.</h2>
+        <p class="section-subtitle animate-on-scroll slide-up">From a quick city hop to a cross-state corporate trip — DriveEase has a tailored solution for every travel need.</p>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section">
+    <div class="container">
+
+        <!-- Self Drive -->
+        <div class="service-block">
+            <div class="animate-on-scroll slide-right">
+                <div class="section-tag">Most Popular</div>
+                <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:14px;">Self-Drive Rentals</h2>
+                <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.75; margin-bottom:16px;">
+                    Take full control of your journey. Our self-drive service lets you pick up the keys and drive wherever you want, whenever you want — no driver required.
+                </p>
+                <div class="service-feature-list">
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Wide range of vehicles — hatchbacks to luxury sedans</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Daily, weekly, and monthly rental options</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Comprehensive insurance included</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>24/7 roadside assistance</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Valid driving license required</div>
+                </div>
+                <a href="fleet.html" class="btn btn-primary">Browse Fleet <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></a>
+            </div>
+            <div class="service-img animate-on-scroll slide-left">
+                <img src="assets/service_selfdrve.png" alt="Self-drive car rental service">
+            </div>
+        </div>
+
+        <!-- Chauffeur -->
+        <div class="service-block reverse">
+            <div class="animate-on-scroll slide-left">
+                <div class="section-tag" style="background:rgba(217,119,6,0.1); border-color:rgba(217,119,6,0.25); color:#D97706;">Premium</div>
+                <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:14px;">Chauffeur Service</h2>
+                <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.75; margin-bottom:16px;">
+                    Sit back, relax, and let our professional drivers take you there. Perfect for business travel, events, or when you simply want to arrive in style.
+                </p>
+                <div class="service-feature-list">
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#D97706;"></div>Experienced, uniformed, background-verified drivers</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#D97706;"></div>Premium vehicles — sedans, SUVs, and luxury cars</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#D97706;"></div>On-time guarantee or full refund</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#D97706;"></div>Advance and same-day booking available</div>
+                </div>
+                <a href="contact.html" class="btn btn-secondary">Book Chauffeur</a>
+            </div>
+            <div class="service-img animate-on-scroll slide-right">
+                <img src="assets/service_airport.png" alt="Chauffeur service">
+            </div>
+        </div>
+
+        <!-- Airport Transfer -->
+        <div class="service-block">
+            <div class="animate-on-scroll slide-right">
+                <div class="section-tag" style="background:rgba(14,165,233,0.1); border-color:rgba(14,165,233,0.25); color:#0EA5E9;">Quick Book</div>
+                <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:14px;">Airport Transfers</h2>
+                <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.75; margin-bottom:16px;">
+                    Never miss a flight. Our airport pickup and drop services are punctual, professional, and available at all major airports across Tamil Nadu.
+                </p>
+                <div class="service-feature-list">
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#0EA5E9;"></div>Flight tracking — we monitor your arrival time</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#0EA5E9;"></div>No waiting charges for delayed flights</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#0EA5E9;"></div>Meet & greet service available</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#0EA5E9;"></div>Fixed rates — no surge pricing</div>
+                </div>
+                <a href="contact.html" class="btn btn-primary">Book Transfer</a>
+            </div>
+            <div class="service-img animate-on-scroll slide-left">
+                <img src="assets/service_airport.png" alt="Airport transfer service">
+            </div>
+        </div>
+
+        <!-- Corporate -->
+        <div class="service-block reverse">
+            <div class="animate-on-scroll slide-left">
+                <div class="section-tag" style="background:rgba(124,58,237,0.1); border-color:rgba(124,58,237,0.25); color:#7C3AED;">Business</div>
+                <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:14px;">Corporate Hire</h2>
+                <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.75; margin-bottom:16px;">
+                    Streamline your company's transportation needs with our corporate accounts. Dedicated fleet management, centralized billing, and priority support.
+                </p>
+                <div class="service-feature-list">
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#7C3AED;"></div>Dedicated account manager</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#7C3AED;"></div>Monthly consolidated invoicing with GST</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#7C3AED;"></div>Volume discounts available</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#7C3AED;"></div>Real-time trip monitoring portal</div>
+                </div>
+                <a href="contact.html" class="btn btn-secondary">Get Corporate Quote</a>
+            </div>
+            <div class="service-img animate-on-scroll slide-right">
+                <img src="assets/service_corporate.png" alt="Corporate car hire">
+            </div>
+        </div>
+
+        <!-- Long Term -->
+        <div class="service-block">
+            <div class="animate-on-scroll slide-right">
+                <div class="section-tag" style="background:rgba(22,163,74,0.1); border-color:rgba(22,163,74,0.25); color:#16A34A;">Best Value</div>
+                <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:14px;">Long-Term Rentals</h2>
+                <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.75; margin-bottom:16px;">
+                    Need a car for weeks or months? Our long-term plans offer significant savings compared to daily rates — perfect for relocations, extended projects, or temporary ownership.
+                </p>
+                <div class="service-feature-list">
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#16A34A;"></div>30% discount on weekly rentals</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#16A34A;"></div>Maintenance included at no extra cost</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#16A34A;"></div>Flexible extension without penalty</div>
+                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#16A34A;"></div>Vehicle swap option if needed</div>
+                </div>
+                <a href="pricing.html" class="btn btn-primary">See Long-Term Plans</a>
+            </div>
+            <div class="service-img animate-on-scroll slide-left" style="background:var(--surface-alt); display:flex; align-items:center; justify-content:center; height:320px; border-radius:var(--radius-xl);">
+                <div style="text-align:center; padding:28px;">
+                    <div style="font-size:4rem; color:var(--primary); margin-bottom:16px;"><i class="fas fa-calendar-alt"></i></div>
+                    <div style="font-family:var(--font-heading); font-size:2rem; font-weight:700; color:var(--primary);">30% OFF</div>
+                    <div style="color:var(--text-muted); font-size:0.85rem; margin-top:8px;">On weekly & monthly plans</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section style="background:linear-gradient(135deg,var(--primary-dark),var(--primary)); padding:72px 0; text-align:center;">
+    <div class="container" style="position:relative; z-index:1;">
+        <h2 style="color:#FFFFFF; margin-bottom:14px;" class="animate-on-scroll slide-up">Not Sure Which Service Is Right?</h2>
+        <p style="color:rgba(255,255,255,0.75); max-width:460px; margin:0 auto 32px; font-size:0.95rem;" class="animate-on-scroll slide-up">Our team is happy to help you pick the best rental option for your needs.</p>
+        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;" class="animate-on-scroll zoom-in">
+            <a href="contact.html" class="btn btn-lg" style="background:#FFFFFF; color:var(--primary); font-weight:700;"><i class="fas fa-phone-alt"></i> Talk to Us</a>
+            <a href="fleet.html" class="btn btn-lg" style="background:rgba(255,255,255,0.12); color:#fff; border:1.5px solid rgba(255,255,255,0.35);"><i class="fas fa-car"></i> View Fleet</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand"><div class="footer-logo"><svg width="30" height="30" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="var(--primary)"/><path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/><circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/><circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/></svg>DriveEase</div><p>Your trusted self-drive car rental partner across Tamil Nadu.</p><div class="footer-socials"><a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a></div></div>
+        <div class="footer-col"><h4>Quick Links</h4><div class="footer-links"><a href="index.html" class="footer-link">Home</a><a href="about.html" class="footer-link">About Us</a><a href="services.html" class="footer-link">Services</a><a href="fleet.html" class="footer-link">Our Fleet</a><a href="pricing.html" class="footer-link">Pricing</a><a href="contact.html" class="footer-link">Contact</a></div></div>
+        <div class="footer-col"><h4>Support</h4><div class="footer-links"><a href="dashboard.html" class="footer-link">Customer Dashboard</a><a href="login.html" class="footer-link">Sign In</a><a href="signup.html" class="footer-link">Sign Up</a><a href="404.html" class="footer-link">404 Page</a><a href="coming-soon.html" class="footer-link">Coming Soon</a></div></div>
+        <div class="footer-col"><h4>Contact Us</h4><div class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 98765 43210</div><div class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@driveease.in</div></div>
+    </div>
+    <div class="footer-bottom" style="max-width:1200px; margin:0 auto;"><p>© 2025 DriveEase. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

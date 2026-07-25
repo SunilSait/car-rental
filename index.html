@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DriveEase Car Rental — Book self-drive cars online. Choose from hatchbacks, sedans, SUVs & luxury vehicles. Affordable daily rates. Easy online booking.">
+    <title>DriveEase | Car Rental & Self-Drive Booking</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231A56DB'/%3E%3Cpath d='M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z' fill='white'/%3E%3Ccircle cx='32' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='32' cy='70' r='3' fill='white'/%3E%3Ccircle cx='68' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='68' cy='70' r='3' fill='white'/%3E%3Cpath d='M28 52 L37 40 L63 40 L72 52Z' fill='%231A56DB' opacity='0.4'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Page-specific styles */
+        .hero-home1 {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-home1 .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/hero_home1.png');
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.03);
+            transition: transform 8s ease;
+        }
+        .hero-home1:hover .hero-bg { transform: scale(1); }
+        .hero-home1 .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10,15,30,0.88) 0%, rgba(15,22,41,0.6) 55%, rgba(26,86,219,0.15) 100%);
+        }
+        .hero-home1 .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        /* Grid layouts */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; align-items: center; }
+        .grid-2-60 { display: grid; grid-template-columns: 3fr 2fr; gap: 60px; align-items: center; }
+
+        /* How it works connector */
+        .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+        .how-grid::before {
+            content: '';
+            position: absolute;
+            top: 56px;
+            transform: translateY(-50%);
+            left: 14%;
+            right: 14%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        /* Coverage area badge */
+        .coverage-map {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+            border-radius: var(--radius-xl);
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        .coverage-map::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(26,86,219,0.08)' stroke-width='1'%3E%3Cpath d='M30 0 L30 60 M0 30 L60 30'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .city-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(26, 86, 219, 0.15);
+            border: 1px solid rgba(26, 86, 219, 0.3);
+            border-radius: 50px;
+            padding: 6px 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin: 4px;
+        }
+
+        /* Testimonials grid */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+        /* CTA section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            padding: 72px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+        }
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -80px;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+
+        /* Why us feature row */
+        .feature-icon-box {
+            width: 56px; height: 56px;
+            background: var(--primary-glow);
+            border-radius: var(--radius-md);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+            margin-bottom: 16px;
+            transition: var(--transition);
+        }
+        .why-card:hover .feature-icon-box {
+            background: var(--primary);
+            color: #FFFFFF;
+            transform: scale(1.1);
+        }
+        .why-card {
+            padding: 28px 24px;
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            transition: var(--transition);
+        }
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 48px var(--shadow-base);
+        }
+        .dark .why-card { background: var(--surface-alt); border-color: var(--border-light); }
+
+        @media (max-width: 1024px) {
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .how-grid { grid-template-columns: repeat(2, 1fr); }
+            .how-grid::before { display: none; }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .grid-2-60 { grid-template-columns: 1fr; gap: 32px; }
+        }
+        @media (max-width: 768px) {
+            .hero-home1 { min-height: 80vh; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .grid-2 { grid-template-columns: 1fr; gap: 24px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .coverage-map { padding: 28px 20px; }
+        }
+        @media (max-width: 480px) {
+            .grid-4 { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="navbar" id="main-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <svg width="34" height="34" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100" height="100" rx="18" fill="var(--primary)"/>
+                <path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/>
+                <circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/>
+                <circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/>
+                <path d="M30 52 L36 40 L64 40 L70 52Z" fill="white" opacity="0.35"/>
+            </svg>
+            <span>DriveEase</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="home2.html" class="nav-link">Premium</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="fleet.html" class="nav-link">Fleet</a>
+            <a href="pricing.html" class="nav-link">Pricing</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+        </div>
+
+        <div class="nav-actions">
+            <button class="icon-btn dark-toggle" id="nav-dark-toggle" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="icon-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL">
+                <i class="fas fa-exchange-alt"></i>
+            </button>
+            <a href="login.html" class="btn btn-secondary btn-sm">Sign In</a>
+            <a href="fleet.html" class="btn btn-primary btn-sm">Book Now</a>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="index.html" class="mobile-nav-link active">Home</a>
+        <a href="home2.html" class="mobile-nav-link">Premium</a>
+        <a href="about.html" class="mobile-nav-link">About</a>
+        <a href="services.html" class="mobile-nav-link">Services</a>
+        <a href="fleet.html" class="mobile-nav-link">Fleet</a>
+        <a href="pricing.html" class="mobile-nav-link">Pricing</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+        <a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+        <div class="mobile-nav-actions">
+            <a href="login.html" class="btn btn-secondary">Sign In</a>
+            <a href="fleet.html" class="btn btn-primary">Book Now</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="hero-home1">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="container">
+            <div style="max-width:680px; margin-bottom:40px;">
+                <div class="section-tag animate-on-scroll zoom-in" style="color:#fff; border-color:rgba(255,255,255,0.25); background:rgba(255,255,255,0.08);">
+                    <i class="fas fa-circle" style="font-size:0.4rem; color:#4ADE80;"></i>
+                    Available Now — 500+ Vehicles
+                </div>
+                <h1 class="animate-on-scroll slide-up" style="color:#FFFFFF; margin-bottom:20px; line-height:1.1;">
+                    Drive Anywhere.<br>
+                    <span class="gradient-text">On Your Terms.</span>
+                </h1>
+                <p class="animate-on-scroll slide-up" style="color:rgba(255,255,255,0.75); font-size:1.1rem; line-height:1.7; margin-bottom:32px; max-width:560px;">
+                    Choose from our premium fleet of self-drive vehicles. Transparent pricing, flexible rentals, and pickup across 12+ city locations.
+                </p>
+                <div class="animate-on-scroll slide-up" style="display:flex; gap:14px; flex-wrap:wrap;">
+                    <a href="fleet.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-car"></i> Browse Fleet
+                    </a>
+                    <a href="about.html" class="btn btn-lg" style="background:rgba(255,255,255,0.12); color:#fff; border:1.5px solid rgba(255,255,255,0.3); backdrop-filter:blur(10px);">
+                        <i class="fas fa-play-circle"></i> How It Works
+                    </a>
+                </div>
+            </div>
+
+            <!-- Search Widget -->
+            <div class="search-widget animate-on-scroll slide-up" style="max-width:900px;">
+                <div class="search-grid">
+                    <div class="search-field">
+                        <label for="pickup-location"><i class="fas fa-map-marker-alt" style="color:var(--primary); margin-right:4px;"></i> Pickup Location</label>
+                        <select class="form-select" id="pickup-location">
+                            <option value="">Select city</option>
+                            <option>Chennai Central</option>
+                            <option>Coimbatore</option>
+                            <option>Madurai</option>
+                            <option>Tiruchirappalli</option>
+                            <option>Salem</option>
+                            <option>Vellore</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label for="pickup-date"><i class="fas fa-calendar" style="color:var(--primary); margin-right:4px;"></i> Pickup Date</label>
+                        <input type="date" class="form-input" id="pickup-date">
+                    </div>
+                    <div class="search-field">
+                        <label for="return-date"><i class="fas fa-calendar-check" style="color:var(--primary); margin-right:4px;"></i> Return Date</label>
+                        <input type="date" class="form-input" id="return-date">
+                    </div>
+                    <div class="search-field">
+                        <label for="vehicle-type"><i class="fas fa-car-side" style="color:var(--primary); margin-right:4px;"></i> Vehicle Type</label>
+                        <select class="form-select" id="vehicle-type">
+                            <option value="">All Types</option>
+                            <option>Hatchback</option>
+                            <option>Sedan</option>
+                            <option>SUV</option>
+                            <option>Luxury</option>
+                            <option>Van / MUV</option>
+                        </select>
+                    </div>
+                    <div class="search-field" style="display:flex; align-items:flex-end;">
+                        <a href="fleet.html" class="btn btn-primary btn-full" style="height:49px;">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     STATS BAR
+     ============================================================ -->
+<section class="stats-bar">
+    <div class="stats-grid">
+        <div class="stat-item animate-on-scroll zoom-in">
+            <div class="stat-number" data-counter data-target="500" data-suffix="+">500+</div>
+            <div class="stat-label">Vehicles in Fleet</div>
+        </div>
+        <div class="stat-item animate-on-scroll zoom-in">
+            <div class="stat-number" data-counter data-target="12" data-suffix="+">12+</div>
+            <div class="stat-label">City Locations</div>
+        </div>
+        <div class="stat-item animate-on-scroll zoom-in">
+            <div class="stat-number" data-counter data-target="50000" data-suffix="+">50,000+</div>
+            <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat-item animate-on-scroll zoom-in">
+            <div class="stat-number" data-counter data-target="98" data-suffix="%">98%</div>
+            <div class="stat-label">Satisfaction Rate</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     FLEET PREVIEW
+     ============================================================ -->
+<section class="section" style="background: var(--bg-light);">
+    <div class="container">
+        <div class="text-center" style="margin-bottom:48px;">
+            <div class="section-tag">Our Fleet</div>
+            <h2 class="section-title animate-on-scroll slide-up">Choose Your Perfect Ride</h2>
+            <p class="section-subtitle animate-on-scroll slide-up">From budget-friendly hatchbacks to premium luxury vehicles — we have the right car for every journey and budget.</p>
+        </div>
+
+        <div class="grid-3" style="gap:24px; margin-bottom:40px;">
+            <!-- Hatchback -->
+            <div class="fleet-card animate-on-scroll slide-up">
+                <div class="fleet-card-img">
+                    <img src="assets/fleet_hatchback.png" alt="Hatchback rental car">
+                </div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div>
+                            <h3 style="font-size:1rem; margin-bottom:2px;">Hatchback</h3>
+                            <p style="font-size:0.8rem; color:var(--text-muted);">City & daily commute</p>
+                        </div>
+                        <span class="badge badge-active">Available</span>
+                    </div>
+                    <div class="fleet-card-price">₹799 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 4+1</span>
+                        <span class="fleet-feat"><i class="fas fa-gas-pump" style="color:var(--primary);"></i> Petrol</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Manual</span>
+                        <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
+                    </div>
+                    <a href="fleet.html" class="btn btn-secondary btn-full" style="margin-top:16px;">View Details</a>
+                </div>
+            </div>
+
+            <!-- Sedan -->
+            <div class="fleet-card animate-on-scroll slide-up">
+                <div class="fleet-card-img">
+                    <img src="assets/fleet_sedan.png" alt="Sedan rental car">
+                </div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div>
+                            <h3 style="font-size:1rem; margin-bottom:2px;">Sedan</h3>
+                            <p style="font-size:0.8rem; color:var(--text-muted);">Business & highway</p>
+                        </div>
+                        <span class="badge badge-active">Available</span>
+                    </div>
+                    <div class="fleet-card-price">₹1,199 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 4+1</span>
+                        <span class="fleet-feat"><i class="fas fa-gas-pump" style="color:var(--primary);"></i> Diesel</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Auto</span>
+                        <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
+                    </div>
+                    <a href="fleet.html" class="btn btn-secondary btn-full" style="margin-top:16px;">View Details</a>
+                </div>
+            </div>
+
+            <!-- SUV -->
+            <div class="fleet-card animate-on-scroll slide-up">
+                <div class="fleet-card-img">
+                    <img src="assets/fleet_suv.png" alt="SUV rental car">
+                </div>
+                <div class="fleet-card-body">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                        <div>
+                            <h3 style="font-size:1rem; margin-bottom:2px;">SUV</h3>
+                            <p style="font-size:0.8rem; color:var(--text-muted);">Family & adventure</p>
+                        </div>
+                        <span class="badge badge-active">Available</span>
+                    </div>
+                    <div class="fleet-card-price">₹1,699 <span>/ day</span></div>
+                    <div class="fleet-card-features">
+                        <span class="fleet-feat"><i class="fas fa-users" style="color:var(--primary);"></i> 6+1</span>
+                        <span class="fleet-feat"><i class="fas fa-gas-pump" style="color:var(--primary);"></i> Diesel</span>
+                        <span class="fleet-feat"><i class="fas fa-cog" style="color:var(--primary);"></i> Auto</span>
+                        <span class="fleet-feat"><i class="fas fa-snowflake" style="color:var(--primary);"></i> AC</span>
+                    </div>
+                    <a href="fleet.html" class="btn btn-secondary btn-full" style="margin-top:16px;">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="fleet.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-th-large"></i> View Full Fleet
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section class="section" style="background: var(--surface-alt);">
+    <div class="container">
+        <div class="text-center" style="margin-bottom:56px;">
+            <div class="section-tag">Simple Process</div>
+            <h2 class="section-title animate-on-scroll slide-up">Book in 4 Easy Steps</h2>
+            <p class="section-subtitle animate-on-scroll slide-up">Get on the road in minutes. Our streamlined booking process makes renting a car hassle-free.</p>
+        </div>
+
+        <div class="how-grid">
+            <div class="how-step animate-on-scroll zoom-in">
+                <div class="step-number" style="position:relative; z-index:1;">1</div>
+                <h3 style="margin-bottom:10px; font-size:1.1rem;">Choose Your Car</h3>
+                <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.65;">Browse our fleet, filter by type, price, and availability. Pick the perfect vehicle for your trip.</p>
+            </div>
+            <div class="how-step animate-on-scroll zoom-in">
+                <div class="step-number" style="position:relative; z-index:1;">2</div>
+                <h3 style="margin-bottom:10px; font-size:1.1rem;">Select Dates</h3>
+                <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.65;">Pick your pickup and return dates. Flexible options from a single day to monthly rentals.</p>
+            </div>
+            <div class="how-step animate-on-scroll zoom-in">
+                <div class="step-number" style="position:relative; z-index:1;">3</div>
+                <h3 style="margin-bottom:10px; font-size:1.1rem;">Confirm Booking</h3>
+                <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.65;">Enter your details, upload your license, and confirm. Instant booking confirmation sent to your email.</p>
+            </div>
+            <div class="how-step animate-on-scroll zoom-in">
+                <div class="step-number" style="position:relative; z-index:1;">4</div>
+                <h3 style="margin-bottom:10px; font-size:1.1rem;">Pick Up & Drive</h3>
+                <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.65;">Arrive at your chosen location, verify your identity, collect the keys, and you're ready to go!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     WHY CHOOSE US
+     ============================================================ -->
+<section class="section">
+    <div class="container">
+        <div class="grid-2" style="gap:64px; align-items:center;">
+            <div>
+                <div class="section-tag">Why DriveEase</div>
+                <h2 class="section-title animate-on-scroll slide-right">Your Freedom. Our Responsibility.</h2>
+                <p style="color:var(--text-muted); line-height:1.75; margin-bottom:32px; font-size:0.95rem;">
+                    We're not just a car rental company — we're your travel partner. With transparent pricing, fully serviced vehicles, and 24/7 roadside support, we ensure every journey is smooth.
+                </p>
+                <div style="display:flex; flex-direction:column; gap:16px;">
+                    <div style="display:flex; align-items:flex-start; gap:14px;" class="animate-on-scroll slide-right">
+                        <div style="width:40px; height:40px; border-radius:var(--radius-md); background:rgba(22,163,74,0.1); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#16A34A;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-size:0.95rem; margin-bottom:4px;">Zero Hidden Charges</h4>
+                            <p style="font-size:0.85rem; color:var(--text-muted);">What you see is what you pay. Full transparency in all rental agreements.</p>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:flex-start; gap:14px;" class="animate-on-scroll slide-right">
+                        <div style="width:40px; height:40px; border-radius:var(--radius-md); background:rgba(22,163,74,0.1); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#16A34A;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-size:0.95rem; margin-bottom:4px;">Fully Insured Fleet</h4>
+                            <p style="font-size:0.85rem; color:var(--text-muted);">All vehicles are comprehensively insured. Drive with complete peace of mind.</p>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:flex-start; gap:14px;" class="animate-on-scroll slide-right">
+                        <div style="width:40px; height:40px; border-radius:var(--radius-md); background:rgba(22,163,74,0.1); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#16A34A;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-size:0.95rem; margin-bottom:4px;">24/7 Roadside Assistance</h4>
+                            <p style="font-size:0.85rem; color:var(--text-muted);">Round-the-clock support wherever you are. We've got you covered always.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-2 animate-on-scroll slide-left" style="grid-template-columns:1fr 1fr; gap:16px;">
+                <div class="why-card" style="background: linear-gradient(135deg, var(--primary-glow), transparent);">
+                    <div class="feature-icon-box"><i class="fas fa-shield-alt fa-lg"></i></div>
+                    <h4 style="font-size:0.95rem; margin-bottom:6px;">Safe & Sanitized</h4>
+                    <p style="font-size:0.82rem; color:var(--text-muted);">Deep cleaned and sanitized before every rental.</p>
+                </div>
+                <div class="why-card" style="margin-top:24px;">
+                    <div class="feature-icon-box"><i class="fas fa-clock fa-lg"></i></div>
+                    <h4 style="font-size:0.95rem; margin-bottom:6px;">Flexible Hours</h4>
+                    <p style="font-size:0.82rem; color:var(--text-muted);">Pick up or drop off any time, 365 days a year.</p>
+                </div>
+                <div class="why-card">
+                    <div class="feature-icon-box"><i class="fas fa-tag fa-lg"></i></div>
+                    <h4 style="font-size:0.95rem; margin-bottom:6px;">Best Rates</h4>
+                    <p style="font-size:0.82rem; color:var(--text-muted);">Competitive pricing with loyalty rewards and discounts.</p>
+                </div>
+                <div class="why-card" style="margin-top:24px;">
+                    <div class="feature-icon-box"><i class="fas fa-map-marked-alt fa-lg"></i></div>
+                    <h4 style="font-size:0.95rem; margin-bottom:6px;">GPS Equipped</h4>
+                    <p style="font-size:0.82rem; color:var(--text-muted);">Built-in GPS in select vehicles for easier navigation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     COVERAGE AREA
+     ============================================================ -->
+<section class="section" style="background: var(--surface-alt);">
+    <div class="container">
+        <div class="coverage-map">
+            <div style="position:relative; z-index:1; text-align:center;">
+                <div class="section-tag" style="color:rgba(255,255,255,0.8); border-color:rgba(26,86,219,0.4); background:rgba(26,86,219,0.15);">Coverage Area</div>
+                <h2 style="color:#FFFFFF; margin-bottom:14px;" class="animate-on-scroll slide-up">We're Across Tamil Nadu</h2>
+                <p style="color:rgba(255,255,255,0.6); margin-bottom:36px; max-width:500px; margin-left:auto; margin-right:auto; font-size:0.95rem;" class="animate-on-scroll slide-up">
+                    With 12+ pickup locations across major cities, we're always close to where you need us most.
+                </p>
+                <div class="animate-on-scroll zoom-in" style="display:flex; flex-wrap:wrap; justify-content:center; gap:6px; max-width:700px; margin:0 auto 36px;">
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Chennai</span>
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Coimbatore</span>
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Madurai</span>
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Tiruchirappalli</span>
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Salem</span>
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Vellore</span>
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Tirunelveli</span>
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Erode</span>
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Thoothukudi</span>
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Dindigul</span>
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Thanjavur</span>
+                    <span class="city-badge"><i class="fas fa-map-marker-alt"></i> Kanchipuram</span>
+                </div>
+                <a href="contact.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-location-arrow"></i> Find Nearest Location
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="section">
+    <div class="container">
+        <div class="text-center" style="margin-bottom:48px;">
+            <div class="section-tag">Reviews</div>
+            <h2 class="section-title animate-on-scroll slide-up">Trusted by Thousands</h2>
+            <p class="section-subtitle animate-on-scroll slide-up">Don't take our word for it — hear from our happy customers who chose DriveEase for their journeys.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card animate-on-scroll slide-up">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.7; margin-bottom:18px;">"Booked a sedan for a Chennai to Coimbatore road trip. The car was in excellent condition, the booking process was super smooth, and the price was very fair. Will definitely use DriveEase again!"</p>
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <div class="testimonial-avatar-placeholder">RK</div>
+                    <div>
+                        <p style="font-size:0.9rem; font-weight:600; margin-bottom:2px;">Rajesh Kumar</p>
+                        <p style="font-size:0.78rem; color:var(--text-muted);">Software Engineer, Chennai</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card animate-on-scroll slide-up">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.7; margin-bottom:18px;">"Took an SUV for a family trip to Ooty. The vehicle was clean, well-maintained, and perfect for the hilly terrain. Customer support was responsive and very helpful throughout our trip."</p>
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <div class="testimonial-avatar-placeholder" style="background:linear-gradient(135deg,#D97706,#B45309);">PM</div>
+                    <div>
+                        <p style="font-size:0.9rem; font-weight:600; margin-bottom:2px;">Priya Muthukumar</p>
+                        <p style="font-size:0.78rem; color:var(--text-muted);">Doctor, Coimbatore</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card animate-on-scroll slide-up">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.7; margin-bottom:18px;">"I use DriveEase almost every weekend. The loyalty points system is great, and I got a free upgrade on my 10th booking. The dashboard is super easy to use for managing bookings and extensions."</p>
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <div class="testimonial-avatar-placeholder" style="background:linear-gradient(135deg,#7C3AED,#5B21B6);">AV</div>
+                    <div>
+                        <p style="font-size:0.9rem; font-weight:600; margin-bottom:2px;">Arjun Venkatesh</p>
+                        <p style="font-size:0.78rem; color:var(--text-muted);">Business Owner, Madurai</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     CTA SECTION
+     ============================================================ -->
+<section class="cta-section">
+    <div class="container" style="position:relative; z-index:1;">
+        <div class="section-tag animate-on-scroll zoom-in" style="color:rgba(255,255,255,0.85); border-color:rgba(255,255,255,0.25); background:rgba(255,255,255,0.1); margin-bottom:20px;">
+            Start Today
+        </div>
+        <h2 class="animate-on-scroll slide-up" style="color:#FFFFFF; margin-bottom:16px; max-width:540px; margin-left:auto; margin-right:auto;">
+            Ready for Your Next Adventure?
+        </h2>
+        <p class="animate-on-scroll slide-up" style="color:rgba(255,255,255,0.75); margin-bottom:36px; font-size:1.05rem; max-width:480px; margin-left:auto; margin-right:auto;">
+            Sign up today and get your first rental with 20% off. No hidden charges, no surprises — just the open road.
+        </p>
+        <div class="animate-on-scroll zoom-in" style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+            <a href="signup.html" class="btn btn-lg" style="background:#FFFFFF; color:var(--primary); font-weight:700;">
+                <i class="fas fa-user-plus"></i> Create Free Account
+            </a>
+            <a href="fleet.html" class="btn btn-lg" style="background:rgba(255,255,255,0.12); color:#fff; border:1.5px solid rgba(255,255,255,0.35);">
+                <i class="fas fa-car"></i> Explore Fleet
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="footer-logo">
+                <svg width="30" height="30" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" rx="18" fill="var(--primary)"/>
+                    <path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/>
+                    <circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/>
+                    <circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/>
+                </svg>
+                DriveEase
+            </div>
+            <p>Your trusted self-drive car rental partner across Tamil Nadu. Transparent pricing, premium fleet, seamless experience.</p>
+            <div class="footer-socials">
+                <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="footer-social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="footer-social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="services.html" class="footer-link">Services</a>
+                <a href="fleet.html" class="footer-link">Our Fleet</a>
+                <a href="pricing.html" class="footer-link">Pricing</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Support</h4>
+            <div class="footer-links">
+                <a href="dashboard.html" class="footer-link">Customer Dashboard</a>
+                <a href="login.html" class="footer-link">Sign In</a>
+                <a href="signup.html" class="footer-link">Sign Up</a>
+                <a href="404.html" class="footer-link">404 Page</a>
+                <a href="coming-soon.html" class="footer-link">Coming Soon</a>
+                <a href="#" class="footer-link">FAQs</a>
+                <a href="#" class="footer-link">Terms & Conditions</a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contact Us</h4>
+            <div class="footer-contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                12 Anna Salai, Chennai — 600002, Tamil Nadu, India
+            </div>
+            <div class="footer-contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +91 98765 43210
+            </div>
+            <div class="footer-contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                hello@driveease.in
+            </div>
+            <div class="footer-contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                24/7 Support Available
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom" style="max-width:1200px; margin:0 auto;">
+        <p>© 2025 DriveEase. All rights reserved. Made with <i class="fas fa-heart" style="color:var(--error);"></i> in Tamil Nadu.</p>
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

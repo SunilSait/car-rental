@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DriveEase Pricing — Simple transparent pricing for car rentals. Basic, Standard, and Premium plans. No hidden charges.">
+    <title>Pricing | DriveEase Car Rental</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231A56DB'/%3E%3Cpath d='M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z' fill='white'/%3E%3Ccircle cx='32' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='32' cy='70' r='3' fill='white'/%3E%3Ccircle cx='68' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='68' cy='70' r='3' fill='white'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+        .faq-item { border-bottom: 1px solid var(--border-light); }
+        .faq-question {
+            width: 100%; text-align: left; background: none; border: none;
+            padding: 20px 0; display: flex; align-items: center; justify-content: space-between;
+            font-size: 0.95rem; font-weight: 600; color: var(--text-dark); cursor: pointer;
+            gap: 14px; transition: color 0.2s;
+        }
+        [dir="rtl"] .faq-question { text-align: right; }
+        .faq-question:hover { color: var(--primary); }
+        .faq-answer { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; padding-bottom: 20px; display: none; }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+        .faq-icon { flex-shrink: 0; transition: transform 0.3s ease; color: var(--primary); font-size: 1.1rem; }
+        .add-on-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        @media (max-width: 1024px) { .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; } .add-on-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .add-on-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <svg width="34" height="34" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="var(--primary)"/><path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/><circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/><circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/></svg>
+            <span>DriveEase</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="home2.html" class="nav-link">Premium</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="fleet.html" class="nav-link">Fleet</a>
+            <a href="pricing.html" class="nav-link active">Pricing</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+        </div>
+        <div class="nav-actions">
+            <button class="icon-btn dark-toggle" title="Toggle Dark Mode" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+            <button class="icon-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+            <a href="login.html" class="btn btn-secondary btn-sm">Sign In</a>
+            <a href="fleet.html" class="btn btn-primary btn-sm">Book Now</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="index.html" class="mobile-nav-link">Home</a><a href="home2.html" class="mobile-nav-link">Premium</a><a href="about.html" class="mobile-nav-link">About</a><a href="services.html" class="mobile-nav-link">Services</a><a href="fleet.html" class="mobile-nav-link">Fleet</a><a href="pricing.html" class="mobile-nav-link active">Pricing</a><a href="contact.html" class="mobile-nav-link">Contact</a><a href="dashboard.html" class="mobile-nav-link">Dashboard</a>
+        <div class="mobile-nav-actions"><a href="login.html" class="btn btn-secondary">Sign In</a><a href="fleet.html" class="btn btn-primary">Book Now</a></div>
+    </div>
+</nav>
+
+<!-- BANNER -->
+<section class="page-banner">
+    <div class="page-banner-bg" style="background-image:url('assets/hero_home1.png');"></div>
+    <div class="page-banner-overlay"></div>
+    <div class="page-banner-content">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><i class="fas fa-chevron-right" style="font-size:0.7rem;"></i><span>Pricing</span></nav>
+            <h1 style="color:#FFFFFF; font-size:clamp(1.8rem,4vw,2.8rem); margin-bottom:8px;">Simple, Transparent Pricing</h1>
+            <p style="color:rgba(255,255,255,0.7); font-size:0.95rem;">No hidden charges. What you see is what you pay.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING CARDS -->
+<section class="section">
+    <div class="container">
+        <div class="text-center" style="margin-bottom:48px;">
+            <div class="section-tag">Plans</div>
+            <h2 class="section-title animate-on-scroll slide-up">Choose Your Rental Plan</h2>
+            <p class="section-subtitle animate-on-scroll slide-up">All plans include 24/7 roadside assistance and free cancellation up to 24 hours before pickup.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Basic -->
+            <div class="pricing-card animate-on-scroll slide-up">
+                <div style="margin-bottom:20px;">
+                    <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted); margin-bottom:8px;">Basic</div>
+                    <div class="price">₹799<span class="price-period"> /day</span></div>
+                    <p style="font-size:0.82rem; color:var(--text-muted); margin-top:8px;">Perfect for city commutes and short trips.</p>
+                </div>
+                <div class="pricing-features">
+                    <div class="pricing-feature"><div class="check-icon"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>Hatchback category</div>
+                    <div class="pricing-feature"><div class="check-icon"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>100 km/day limit</div>
+                    <div class="pricing-feature"><div class="check-icon"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>Third-party insurance</div>
+                    <div class="pricing-feature"><div class="check-icon"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>24/7 support</div>
+                    <div class="pricing-feature" style="color:var(--text-light); text-decoration:line-through;"><div style="width:18px; height:18px; border-radius:50%; background:rgba(220,38,38,0.08); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#DC2626;"><i class="fas fa-times" style="font-size:0.6rem;"></i></div>GPS Navigation</div>
+                    <div class="pricing-feature" style="color:var(--text-light); text-decoration:line-through;"><div style="width:18px; height:18px; border-radius:50%; background:rgba(220,38,38,0.08); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#DC2626;"><i class="fas fa-times" style="font-size:0.6rem;"></i></div>Comprehensive cover</div>
+                </div>
+                <a href="signup.html" class="btn btn-secondary btn-full">Get Started</a>
+            </div>
+
+            <!-- Standard (Featured) -->
+            <div class="pricing-card featured animate-on-scroll zoom-in">
+                <div style="position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--primary); color:#fff; font-size:0.65rem; font-weight:700; padding:5px 16px; border-radius:0 0 10px 10px; letter-spacing:0.12em; text-transform:uppercase; white-space:nowrap;">★ Most Popular</div>
+                <div style="margin-bottom:20px;">
+                    <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,255,255,0.5); margin-bottom:8px;">Standard</div>
+                    <div class="price">₹1,499<span class="price-period"> /day</span></div>
+                    <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); margin-top:8px;">Best for families and highway trips.</p>
+                </div>
+                <div class="pricing-features">
+                    <div class="pricing-feature"><div class="check-icon" style="background:rgba(74,222,128,0.15); color:#4ADE80;"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>Sedan or SUV</div>
+                    <div class="pricing-feature"><div class="check-icon" style="background:rgba(74,222,128,0.15); color:#4ADE80;"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>Unlimited kilometers</div>
+                    <div class="pricing-feature"><div class="check-icon" style="background:rgba(74,222,128,0.15); color:#4ADE80;"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>Full comprehensive cover</div>
+                    <div class="pricing-feature"><div class="check-icon" style="background:rgba(74,222,128,0.15); color:#4ADE80;"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>24/7 priority support</div>
+                    <div class="pricing-feature"><div class="check-icon" style="background:rgba(74,222,128,0.15); color:#4ADE80;"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>GPS Navigation</div>
+                    <div class="pricing-feature" style="color:rgba(255,255,255,0.4); text-decoration:line-through;"><div style="width:18px; height:18px; border-radius:50%; background:rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><i class="fas fa-times" style="font-size:0.6rem;"></i></div>Concierge service</div>
+                </div>
+                <a href="signup.html" class="btn btn-primary btn-full">Get Started</a>
+            </div>
+
+            <!-- Premium -->
+            <div class="pricing-card animate-on-scroll slide-up">
+                <div style="margin-bottom:20px;">
+                    <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted); margin-bottom:8px;">Premium</div>
+                    <div class="price">₹3,499<span class="price-period"> /day</span></div>
+                    <p style="font-size:0.82rem; color:var(--text-muted); margin-top:8px;">Luxury vehicles with VIP treatment.</p>
+                </div>
+                <div class="pricing-features">
+                    <div class="pricing-feature"><div class="check-icon"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>Luxury vehicles</div>
+                    <div class="pricing-feature"><div class="check-icon"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>Unlimited kilometers</div>
+                    <div class="pricing-feature"><div class="check-icon"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>Comprehensive cover</div>
+                    <div class="pricing-feature"><div class="check-icon"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>24/7 priority support</div>
+                    <div class="pricing-feature"><div class="check-icon"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>GPS Navigation</div>
+                    <div class="pricing-feature"><div class="check-icon"><i class="fas fa-check" style="font-size:0.65rem;"></i></div>Concierge service</div>
+                </div>
+                <a href="signup.html" class="btn btn-secondary btn-full">Get Started</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="section" style="background:var(--surface-alt);">
+    <div class="container">
+        <div class="text-center" style="margin-bottom:40px;">
+            <div class="section-tag">Extras</div>
+            <h2 class="section-title animate-on-scroll slide-up">Optional Add-Ons</h2>
+            <p class="section-subtitle animate-on-scroll slide-up">Enhance your rental with these optional extras available at checkout.</p>
+        </div>
+        <div class="add-on-grid">
+            <div class="card animate-on-scroll slide-up" style="padding:24px; display:flex; gap:14px; align-items:flex-start;">
+                <div style="width:44px; height:44px; background:var(--primary-glow); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; color:var(--primary); flex-shrink:0;"><i class="fas fa-baby-carriage"></i></div>
+                <div><h4 style="font-size:0.9rem; margin-bottom:5px;">Child Safety Seat</h4><p style="font-size:0.8rem; color:var(--text-muted);">Certified baby/child seat</p><div style="font-weight:700; color:var(--primary); font-size:0.9rem; margin-top:8px;">+ ₹100/day</div></div>
+            </div>
+            <div class="card animate-on-scroll slide-up" style="padding:24px; display:flex; gap:14px; align-items:flex-start;">
+                <div style="width:44px; height:44px; background:rgba(217,119,6,0.1); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; color:#D97706; flex-shrink:0;"><i class="fas fa-user-shield"></i></div>
+                <div><h4 style="font-size:0.9rem; margin-bottom:5px;">Extra Driver</h4><p style="font-size:0.8rem; color:var(--text-muted);">Add an additional driver</p><div style="font-weight:700; color:var(--primary); font-size:0.9rem; margin-top:8px;">+ ₹150/day</div></div>
+            </div>
+            <div class="card animate-on-scroll slide-up" style="padding:24px; display:flex; gap:14px; align-items:flex-start;">
+                <div style="width:44px; height:44px; background:rgba(22,163,74,0.1); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; color:#16A34A; flex-shrink:0;"><i class="fas fa-shield-alt"></i></div>
+                <div><h4 style="font-size:0.9rem; margin-bottom:5px;">Zero Excess Cover</h4><p style="font-size:0.8rem; color:var(--text-muted);">No deductible in case of damage</p><div style="font-weight:700; color:var(--primary); font-size:0.9rem; margin-top:8px;">+ ₹200/day</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+    <div class="container">
+        <div style="display:grid; grid-template-columns:1fr 1.4fr; gap:64px; align-items:start;">
+            <div>
+                <div class="section-tag">FAQ</div>
+                <h2 class="section-title animate-on-scroll slide-right">Common Questions</h2>
+                <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.75;" class="animate-on-scroll slide-right">
+                    Still have questions? <a href="contact.html" style="color:var(--primary); font-weight:600;">Reach out to us</a> — our team is happy to help.
+                </p>
+            </div>
+            <div class="animate-on-scroll slide-left">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What documents do I need to rent a car?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">You'll need a valid driving license (at least 1 year old), Aadhaar/PAN for identity, and a credit/debit card for the security deposit. International travelers need a valid passport and international driving permit.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Is there a security deposit?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">Yes, a refundable security deposit of ₹2,000–₹10,000 (depending on vehicle category) is collected at pickup. It is fully refunded within 3 working days after the vehicle is returned in good condition.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Can I extend my rental period?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">Absolutely! You can extend your rental through the customer dashboard or by calling our support team. Extensions are subject to vehicle availability and are charged at the standard daily rate.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What is the fuel policy?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">All vehicles are provided with a full tank. You are expected to return them with a full tank. If the vehicle is returned with less fuel, the cost difference plus a refueling charge of ₹100 will be deducted.</div>
+                </div>
+                <div class="faq-item" style="border-bottom:none;">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What happens if the car breaks down?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">Our 24/7 roadside assistance team is available at all times. Call our support line and we'll dispatch help immediately. If the issue cannot be resolved quickly, we'll arrange a replacement vehicle at no extra cost.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand"><div class="footer-logo"><svg width="30" height="30" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="var(--primary)"/><path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/><circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/><circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/></svg>DriveEase</div><p>Your trusted self-drive car rental partner across Tamil Nadu.</p><div class="footer-socials"><a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a></div></div>
+        <div class="footer-col"><h4>Quick Links</h4><div class="footer-links"><a href="index.html" class="footer-link">Home</a><a href="about.html" class="footer-link">About Us</a><a href="services.html" class="footer-link">Services</a><a href="fleet.html" class="footer-link">Our Fleet</a><a href="pricing.html" class="footer-link">Pricing</a><a href="contact.html" class="footer-link">Contact</a></div></div>
+        <div class="footer-col"><h4>Support</h4><div class="footer-links"><a href="dashboard.html" class="footer-link">Customer Dashboard</a><a href="login.html" class="footer-link">Sign In</a><a href="signup.html" class="footer-link">Sign Up</a><a href="404.html" class="footer-link">404 Page</a><a href="coming-soon.html" class="footer-link">Coming Soon</a></div></div>
+        <div class="footer-col"><h4>Contact Us</h4><div class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.32h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 98765 43210</div><div class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>hello@driveease.in</div></div>
+    </div>
+    <div class="footer-bottom" style="max-width:1200px; margin:0 auto;"><p>© 2025 DriveEase. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a></div></div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+}
+</script>
+</body>
+</html>

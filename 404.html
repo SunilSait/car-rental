@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found — DriveEase Car Rental. Return to our homepage and find your perfect rental car.">
+    <title>404 — Page Not Found | DriveEase</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231A56DB'/%3E%3Cpath d='M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z' fill='white'/%3E%3Ccircle cx='32' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='32' cy='70' r='3' fill='white'/%3E%3Ccircle cx='68' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='68' cy='70' r='3' fill='white'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @keyframes roadAnimation {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 0; }
+        }
+        .road-strip {
+            height: 4px;
+            background: repeating-linear-gradient(90deg, var(--primary) 0, var(--primary) 30px, transparent 30px, transparent 50px);
+            animation: roadAnimation 1s linear infinite;
+            opacity: 0.5;
+        }
+        @keyframes carBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .car-icon { animation: carBounce 2s ease-in-out infinite; }
+    </style>
+</head>
+<body>
+
+<!-- Top-right controls -->
+<div class="auth-top-icons">
+    <button class="icon-btn dark-toggle" title="Toggle Dark Mode" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+    <button class="icon-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL"><i class="fas fa-exchange-alt"></i></button>
+</div>
+
+<div style="min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24px; text-align:center; background:var(--bg-light); position:relative; overflow:hidden;">
+
+    <!-- Background decoration -->
+    <div style="position:absolute; inset:0; pointer-events:none;">
+        <div style="position:absolute; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(26,86,219,0.07) 0%,transparent 70%); top:-200px; right:-200px;"></div>
+        <div style="position:absolute; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle,rgba(26,86,219,0.05) 0%,transparent 70%); bottom:-150px; left:-150px;"></div>
+        <div style="position:absolute; inset:0; background-image:linear-gradient(rgba(26,86,219,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(26,86,219,0.03) 1px,transparent 1px); background-size:56px 56px;"></div>
+    </div>
+
+    <div style="position:relative; z-index:1; max-width:600px; width:100%;">
+        <!-- Logo -->
+        <a href="index.html" style="display:inline-flex; align-items:center; gap:10px; font-family:var(--font-heading); font-size:1.3rem; font-weight:700; color:var(--text-dark); text-decoration:none; margin-bottom:48px; transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">
+            <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100" height="100" rx="18" fill="var(--primary)"/>
+                <path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/>
+                <circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/>
+                <circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/>
+            </svg>
+            DriveEase
+        </a>
+
+        <!-- 404 Number with car icon -->
+        <div style="margin-bottom:24px;">
+            <div style="font-family:var(--font-heading); font-size:clamp(7rem,20vw,10rem); font-weight:700; line-height:1; background:linear-gradient(135deg,var(--primary),var(--primary-light),#93BFFF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; position:relative; display:inline-block;">
+                404
+            </div>
+            <div class="road-strip" style="margin-top:8px; border-radius:2px;"></div>
+            <div class="car-icon" style="margin-top:12px; color:var(--primary); font-size:2.5rem;">
+                <i class="fas fa-car-side"></i>
+            </div>
+        </div>
+
+        <h1 style="font-size:clamp(1.6rem,4vw,2.2rem); margin-bottom:14px; color:var(--text-dark);">
+            You've Taken a Wrong Turn
+        </h1>
+        <p style="font-size:1rem; color:var(--text-muted); line-height:1.7; margin-bottom:36px; max-width:460px; margin-left:auto; margin-right:auto;">
+            The road you're looking for doesn't exist. The page may have been moved, removed, or the link may be incorrect. Let's get you back on the right route.
+        </p>
+
+        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:40px;">
+            <a href="index.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+            <a href="fleet.html" class="btn btn-secondary btn-lg">
+                <i class="fas fa-car"></i> Browse Fleet
+            </a>
+        </div>
+
+        <!-- Quick links -->
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:6px 20px;">
+            <a href="about.html" style="font-size:0.8rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; transition:color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">About</a>
+            <span style="color:var(--border-light);">·</span>
+            <a href="services.html" style="font-size:0.8rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; transition:color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Services</a>
+            <span style="color:var(--border-light);">·</span>
+            <a href="pricing.html" style="font-size:0.8rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; transition:color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Pricing</a>
+            <span style="color:var(--border-light);">·</span>
+            <a href="contact.html" style="font-size:0.8rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; transition:color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Contact</a>
+            <span style="color:var(--border-light);">·</span>
+            <a href="login.html" style="font-size:0.8rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.1em; transition:color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Sign In</a>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

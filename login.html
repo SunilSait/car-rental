@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign in to your DriveEase account to manage bookings, view rental history, and access your customer dashboard.">
+    <title>Sign In | DriveEase Car Rental</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231A56DB'/%3E%3Cpath d='M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z' fill='white'/%3E%3Ccircle cx='32' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='32' cy='70' r='3' fill='white'/%3E%3Ccircle cx='68' cy='70' r='7' fill='%231A56DB'/%3E%3Ccircle cx='68' cy='70' r='3' fill='white'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auth-bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(26,86,219,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(26,86,219,0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top-right icons -->
+<div class="auth-top-icons">
+    <button class="icon-btn dark-toggle" id="auth-dark-toggle" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+    <button class="icon-btn rtl-toggle" title="Toggle RTL" aria-label="Toggle RTL">
+        <i class="fas fa-exchange-alt"></i>
+    </button>
+</div>
+
+<div class="auth-page" id="login-page">
+    <!-- Background decorations -->
+    <div class="auth-bg-grid"></div>
+    <div style="position:absolute; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(26,86,219,0.1) 0%,transparent 70%); top:-150px; right:-150px; pointer-events:none;"></div>
+    <div style="position:absolute; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,rgba(26,86,219,0.06) 0%,transparent 70%); bottom:-80px; left:-80px; pointer-events:none;"></div>
+
+    <!-- Auth Card -->
+    <div class="auth-card animate-on-scroll zoom-in">
+        <!-- Logo -->
+        <a href="index.html" class="auth-logo" id="login-logo">
+            <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100" height="100" rx="18" fill="var(--primary)"/>
+                <path d="M20 58 L24 42 Q26 36 33 36 L67 36 Q74 36 76 42 L80 58 Q84 60 84 65 L84 72 Q84 74 82 74 L74 74 L74 70 Q74 66 70 66 L30 66 Q26 66 26 70 L26 74 L18 74 Q16 74 16 72 L16 65 Q16 60 20 58Z" fill="white"/>
+                <circle cx="32" cy="70" r="7" fill="var(--primary)"/><circle cx="32" cy="70" r="3" fill="white"/>
+                <circle cx="68" cy="70" r="7" fill="var(--primary)"/><circle cx="68" cy="70" r="3" fill="white"/>
+            </svg>
+            <span>DriveEase</span>
+        </a>
+
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to manage your rentals</p>
+
+        <form class="auth-form" id="login-form" onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+            <div class="form-group">
+                <label class="form-label" for="login-email">Email Address</label>
+                <input type="email" id="login-email" class="form-input" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="login-password">Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required>
+                    <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="auth-row">
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:0.85rem;">
+                    <input type="checkbox" style="accent-color:var(--primary);"> Remember me
+                </label>
+                <a href="#" style="color:var(--primary); font-size:0.85rem; font-weight:500;">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="login-submit">
+                <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+        </form>
+
+        <div class="auth-divider">or continue with</div>
+
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <!-- Google -->
+            <button class="btn-social" id="login-google">
+                <svg width="18" height="18" viewBox="0 0 24 24">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                Continue with Google
+            </button>
+            <!-- Apple -->
+            <button class="btn-social" id="login-apple">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                </svg>
+                Continue with Apple
+            </button>
+            <!-- Facebook -->
+            <button class="btn-social" id="login-facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2">
+                    <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+                </svg>
+                Continue with Facebook
+            </button>
+        </div>
+
+        <p class="auth-footer-text">Don't have an account? <a href="signup.html">Create one free</a></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
