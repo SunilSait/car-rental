@@ -41,9 +41,12 @@
             width: 7px; height: 7px; border-radius: 50%;
             background: var(--primary); flex-shrink: 0;
         }
-        @media (max-width: 768px) {
-            .service-block { grid-template-columns: 1fr; gap: 28px; direction: ltr !important; }
+        @media (max-width: 1024px) {
+            .service-block { grid-template-columns: 1fr; gap: 28px; text-align: center; direction: ltr !important; }
             .service-block > * { direction: ltr !important; }
+            .service-feature-list { display: inline-flex; flex-direction: column; align-items: flex-start; margin: 20px auto 28px; text-align: left; }
+            .service-block .section-tag { margin-left: auto; margin-right: auto; }
+            .service-block .btn { margin-left: auto; margin-right: auto; display: inline-flex; }
         }
     </style>
 </head>
@@ -148,16 +151,16 @@
         <!-- Chauffeur -->
         <div class="service-block reverse">
             <div class="animate-on-scroll slide-left">
-                <div class="section-tag" style="background:rgba(217,119,6,0.1); border-color:rgba(217,119,6,0.25); color:#D97706;">Premium</div>
+                <div class="section-tag">Premium</div>
                 <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:14px;">Chauffeur Service</h2>
                 <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.75; margin-bottom:16px;">
                     Sit back, relax, and let our professional drivers take you there. Perfect for business travel, events, or when you simply want to arrive in style.
                 </p>
                 <div class="service-feature-list">
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#D97706;"></div>Experienced, uniformed, background-verified drivers</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#D97706;"></div>Premium vehicles — sedans, SUVs, and luxury cars</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#D97706;"></div>On-time guarantee or full refund</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#D97706;"></div>Advance and same-day booking available</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Experienced, uniformed, background-verified drivers</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Premium vehicles — sedans, SUVs, and luxury cars</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>On-time guarantee or full refund</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Advance and same-day booking available</div>
                 </div>
                 <a href="contact.html" class="btn btn-secondary">Book Chauffeur</a>
             </div>
@@ -169,16 +172,16 @@
         <!-- Airport Transfer -->
         <div class="service-block">
             <div class="animate-on-scroll slide-right">
-                <div class="section-tag" style="background:rgba(14,165,233,0.1); border-color:rgba(14,165,233,0.25); color:#0EA5E9;">Quick Book</div>
+                <div class="section-tag">Quick Book</div>
                 <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:14px;">Airport Transfers</h2>
                 <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.75; margin-bottom:16px;">
                     Never miss a flight. Our airport pickup and drop services are punctual, professional, and available at all major airports across Tamil Nadu.
                 </p>
                 <div class="service-feature-list">
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#0EA5E9;"></div>Flight tracking — we monitor your arrival time</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#0EA5E9;"></div>No waiting charges for delayed flights</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#0EA5E9;"></div>Meet & greet service available</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#0EA5E9;"></div>Fixed rates — no surge pricing</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Flight tracking — we monitor your arrival time</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>No waiting charges for delayed flights</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Meet & greet service available</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Fixed rates — no surge pricing</div>
                 </div>
                 <a href="contact.html" class="btn btn-primary">Book Transfer</a>
             </div>
@@ -190,16 +193,16 @@
         <!-- Corporate -->
         <div class="service-block reverse">
             <div class="animate-on-scroll slide-left">
-                <div class="section-tag" style="background:rgba(124,58,237,0.1); border-color:rgba(124,58,237,0.25); color:#7C3AED;">Business</div>
+                <div class="section-tag">Business</div>
                 <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:14px;">Corporate Hire</h2>
                 <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.75; margin-bottom:16px;">
                     Streamline your company's transportation needs with our corporate accounts. Dedicated fleet management, centralized billing, and priority support.
                 </p>
                 <div class="service-feature-list">
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#7C3AED;"></div>Dedicated account manager</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#7C3AED;"></div>Monthly consolidated invoicing with GST</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#7C3AED;"></div>Volume discounts available</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#7C3AED;"></div>Real-time trip monitoring portal</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Dedicated account manager</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Monthly consolidated invoicing with GST</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Volume discounts available</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Real-time trip monitoring portal</div>
                 </div>
                 <a href="contact.html" class="btn btn-secondary">Get Corporate Quote</a>
             </div>
@@ -211,16 +214,16 @@
         <!-- Long Term -->
         <div class="service-block">
             <div class="animate-on-scroll slide-right">
-                <div class="section-tag" style="background:rgba(22,163,74,0.1); border-color:rgba(22,163,74,0.25); color:#16A34A;">Best Value</div>
+                <div class="section-tag">Best Value</div>
                 <h2 style="font-size:clamp(1.4rem,3vw,2rem); margin-bottom:14px;">Long-Term Rentals</h2>
                 <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.75; margin-bottom:16px;">
                     Need a car for weeks or months? Our long-term plans offer significant savings compared to daily rates — perfect for relocations, extended projects, or temporary ownership.
                 </p>
                 <div class="service-feature-list">
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#16A34A;"></div>30% discount on weekly rentals</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#16A34A;"></div>Maintenance included at no extra cost</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#16A34A;"></div>Flexible extension without penalty</div>
-                    <div class="service-feature-item"><div class="service-feature-dot" style="background:#16A34A;"></div>Vehicle swap option if needed</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>30% discount on weekly rentals</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Maintenance included at no extra cost</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Flexible extension without penalty</div>
+                    <div class="service-feature-item"><div class="service-feature-dot"></div>Vehicle swap option if needed</div>
                 </div>
                 <a href="pricing.html" class="btn btn-primary">See Long-Term Plans</a>
             </div>
