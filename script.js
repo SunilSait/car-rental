@@ -255,18 +255,6 @@
         }
     });
 
-    // ============================================================
-    // DASHBOARD THEME TOGGLE
-    // ============================================================
-    document.addEventListener('click', function (e) {
-        const btn = e.target.closest('#dash-theme-toggle');
-        if (!btn) return;
-        const html = document.documentElement;
-        const isDark = html.classList.toggle('dark');
-        localStorage.setItem('dr-dark-mode', isDark ? 'true' : 'false');
-        const icon = btn.querySelector('i');
-        if (icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-    });
 
     // ============================================================
     // TABS
