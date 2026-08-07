@@ -251,6 +251,7 @@ input, textarea, select, button {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
+    width: 100%;
 }
 
 .section-tag {
@@ -446,8 +447,11 @@ textarea.form-input { resize: vertical; min-height: 120px; }
    NAVBAR
    ============================================================ */
 .navbar {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
@@ -823,31 +827,36 @@ input[type="tel"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 9px;
     font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--text-dark);
     text-decoration: none;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
     transition: opacity 0.2s;
+}
+
+.auth-logo svg {
+    width: 34px;
+    height: 34px;
 }
 
 .auth-logo:hover { opacity: 0.8; }
 
 .auth-title {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 1.15rem;
+    font-weight: 600;
     color: var(--text-dark);
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     text-align: center;
 }
 
 .auth-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--text-muted);
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     text-align: center;
 }
 
@@ -1192,7 +1201,7 @@ input[type="tel"] {
     position: absolute;
     inset: 0;
     background-size: cover;
-    background-position: center 60%;
+    background-position: center;
 }
 
 .page-banner-overlay {
